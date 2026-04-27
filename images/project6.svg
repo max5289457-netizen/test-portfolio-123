@@ -1,0 +1,6 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#fff3e0"/>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial" font-size="20" fill="#ef6c00">Проект</text>
+  <text x="200" y="165" text-anchor="middle" font-family="Arial" font-size="20" fill="#ef6c00">размещения</text>
+  <text x="200" y="190" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Композиция и макет</text>
+</svg>

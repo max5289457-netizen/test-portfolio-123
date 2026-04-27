@@ -1,0 +1,6 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f3e5f5"/>
+  <text x="200" y="140" text-anchor="middle" font-family="Arial" font-size="20" fill="#7b1fa2">Визуальное</text>
+  <text x="200" y="165" text-anchor="middle" font-family="Arial" font-size="20" fill="#7b1fa2">представление</text>
+  <text x="200" y="190" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Креативный дизайн</text>
+</svg>

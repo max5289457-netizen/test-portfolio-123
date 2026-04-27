@@ -1,0 +1,608 @@
+/* Глобальные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #1a1a1a;
+    --secondary-color: #f0f0f0;
+    --accent-color: #ff6b35;
+    --text-color: #333;
+    --light-text: #666;
+    --border-color: #e0e0e0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Навигация */
+.navbar {
+    position: sticky;
+    top: 0;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+/* Кнопки */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.btn-primary {
+    background: var(--accent-color);
+    color: white;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-color);
+    border: 2px solid var(--accent-color);
+}
+
+.btn-secondary:hover {
+    background: var(--accent-color);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.link-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 12px 26px;
+    border-radius: 999px;
+    background: #ffffff;
+    color: var(--primary-color);
+    border: 2px solid rgba(255, 107, 53, 0.2);
+    text-decoration: none;
+    font-weight: 700;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.link-button:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+    transform: translateY(-2px);
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: #e55a2b;
+    transform: translateY(-2px);
+}
+
+/* Героя секция */
+.hero {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    animation: fadeInDown 0.8s ease;
+}
+
+.hero .subtitle {
+    font-size: 24px;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.hero .description {
+    font-size: 18px;
+    color: #ccc;
+    margin-bottom: 30px;
+}
+
+.hero .btn {
+    margin-top: 20px;
+}
+
+/* Обо мне */
+.about {
+    padding: 80px 0;
+    background: white;
+}
+
+.about h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.about-image {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.about-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.about-text-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.about-text p {
+    font-size: 16px;
+    color: var(--light-text);
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.about-skills h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill {
+    display: inline-block;
+    background: var(--secondary-color);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.skill:hover {
+    background: var(--accent-color);
+    color: white;
+    border-color: var(--accent-color);
+}
+
+/* Портфолио */
+.portfolio {
+    padding: 80px 0;
+    background: var(--secondary-color);
+}
+
+.portfolio h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.portfolio-categories {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.category-folder {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.folder-header {
+    background: linear-gradient(135deg, #f5f5f5 0%, #f0f0f0 100%);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    border-left: 5px solid var(--accent-color);
+}
+
+.folder-header:hover {
+    background: linear-gradient(135deg, #ff6b35 0%, #ff8555 100%);
+    transform: translateX(8px);
+}
+
+.folder-header:hover h3 {
+    color: white;
+}
+
+.folder-header:hover .folder-count {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.folder-icon {
+    font-size: 36px;
+    transition: transform 0.3s ease;
+}
+
+.category-folder.open .folder-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+
+.folder-header h3 {
+    font-size: 24px;
+    color: #333;
+    margin: 0;
+    flex: 1;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.folder-count {
+    background: rgba(255, 107, 53, 0.15);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: var(--accent-color);
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.folder-content {
+    padding: 25px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 2000px;
+    }
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.portfolio-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.portfolio-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.portfolio-item:hover .portfolio-image img {
+    transform: scale(1.08);
+}
+
+.portfolio-info {
+    padding: 16px;
+}
+
+.portfolio-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.portfolio-info p {
+    color: var(--light-text);
+    font-size: 14px;
+}
+
+/* Контакты */
+.contact {
+    padding: 80px 0;
+    background: white;
+}
+
+.contact h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.contact-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.contact-item h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.contact-item a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+    color: #e55a2b;
+    text-decoration: underline;
+}
+
+/* Форма контакта */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: inherit;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.contact-form .btn {
+    align-self: flex-start;
+}
+
+/* Футер */
+.footer {
+    background: var(--primary-color);
+    color: white;
+    padding: 30px 0;
+    text-align: center;
+}
+
+/* Анимации */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Lightbox галерея */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    animation: fadeIn 0.3s ease;
+}
+
+.lightbox.active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img {
+    max-width: 100%;
+    max-height: 85vh;
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    transition: color 0.3s ease;
+}
+
+.lightbox-close:hover {
+    color: var(--accent-color);
+}
+
+.lightbox-nav {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 12px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero .subtitle {
+        font-size: 18px;
+    }
+
+    .about-content {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-content {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 10px;
+        font-size: 14px;
+    }
+
+    .hero-content h1 {
+        font-size: 24px;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+
+    .about,
+    .portfolio,
+    .contact {
+        padding: 50px 0;
+    }
+}
