@@ -581,8 +581,85 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .portfolio {
+        padding: 56px 0;
+    }
+
+    .portfolio h2 {
+        margin-bottom: 24px;
+    }
+
+    .portfolio-categories {
+        gap: 0;
+        background: #ffffff;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+    }
+
+    .category-folder {
+        border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .category-folder:last-child {
+        border-bottom: none;
+    }
+
+    .folder-header {
+        padding: 16px 18px;
+        gap: 12px;
+        border-left: 0;
+        transform: none;
+    }
+
+    .folder-header:hover {
+        transform: none;
+    }
+
+    .folder-icon {
+        font-size: 28px;
+    }
+
+    .folder-header h3 {
+        font-size: 18px;
+    }
+
+    .folder-count {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .folder-content {
+        padding: 14px 16px 18px;
+        background: #fafafa;
+    }
+
     .portfolio-grid {
         grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .portfolio-item {
+        border-radius: 12px;
+    }
+
+    .portfolio-image {
+        height: 170px;
+    }
+
+    .portfolio-info {
+        padding: 14px;
+    }
+
+    .portfolio-info h3 {
+        font-size: 18px;
+    }
+
+    .portfolio-info p {
+        font-size: 13px;
     }
 }
 
@@ -604,5 +681,29 @@ body {
     .portfolio,
     .contact {
         padding: 50px 0;
+    }
+
+    .portfolio-categories {
+        border-radius: 14px;
+    }
+
+    .folder-header {
+        padding: 14px 16px;
+    }
+
+    .folder-header h3 {
+        font-size: 17px;
+    }
+
+    .folder-content {
+        padding: 12px 14px 16px;
+    }
+
+    .portfolio-grid {
+        gap: 10px;
+    }
+
+    .portfolio-image {
+        height: 155px;
     }
 }
