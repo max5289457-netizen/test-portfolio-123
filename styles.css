@@ -243,38 +243,38 @@ body {
 
 /* Портфолио */
 .portfolio {
-    padding: 80px 0;
+    padding: 72px 0;
     background: var(--secondary-color);
 }
 
 .portfolio h2 {
-    font-size: 36px;
-    margin-bottom: 50px;
+    font-size: 34px;
+    margin-bottom: 34px;
     text-align: center;
 }
 
 .portfolio-categories {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 18px;
 }
 
 .portfolio-category {
     background: white;
-    border-radius: 18px;
+    border-radius: 14px;
     overflow: hidden;
-    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .portfolio-category:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.1);
 }
 
 .category-header {
     background: rgba(255, 255, 255, 0.96);
-    padding: 24px 28px;
+    padding: 18px 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -283,7 +283,7 @@ body {
 }
 
 .category-header h3 {
-    font-size: 24px;
+    font-size: 21px;
     color: var(--primary-color);
     margin: 0;
     font-weight: 700;
@@ -291,16 +291,16 @@ body {
 
 .portfolio-count {
     background: rgba(255, 107, 53, 0.12);
-    padding: 8px 14px;
+    padding: 6px 12px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--accent-color);
     font-weight: 600;
 }
 
 .folder-content {
     display: block;
-    padding: 25px;
+    padding: 18px 20px 20px;
 }
 
 @keyframes slideDown {
@@ -316,17 +316,21 @@ body {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.portfolio-categories > .portfolio-category:first-child .portfolio-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .marketplace-category .portfolio-grid {
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 18px;
+    gap: 16px;
 }
 
 .marketplace-category .portfolio-image {
-    height: 170px;
+    height: 180px;
 }
 
 .marketplace-category .portfolio-caption {
@@ -336,9 +340,9 @@ body {
 
 .portfolio-item {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     display: flex;
@@ -346,13 +350,13 @@ body {
 }
 
 .portfolio-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
 }
 
 .portfolio-image {
     width: 100%;
-    height: 200px;
+    height: 170px;
     overflow: hidden;
     cursor: pointer;
     flex-shrink: 0;
@@ -370,8 +374,8 @@ body {
 }
 
 .portfolio-caption {
-    padding: 14px 16px 16px;
-    font-size: 14px;
+    padding: 12px 14px 14px;
+    font-size: 13px;
     font-weight: 600;
     color: var(--primary-color);
     text-align: center;
@@ -550,20 +554,41 @@ body {
 
 .lightbox-prev,
 .lightbox-next {
-    background: transparent;
-    border: 2px solid white;
+    width: 56px;
+    height: 56px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.45);
     color: white;
-    padding: 12px 20px;
-    font-size: 24px;
+    padding: 0;
+    font-size: 26px;
+    line-height: 1;
     cursor: pointer;
-    border-radius: 5px;
-    transition: all 0.3s ease;
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
+    transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 .lightbox-prev:hover,
 .lightbox-next:hover {
-    background: var(--accent-color);
-    border-color: var(--accent-color);
+    background: rgba(255, 107, 53, 0.95);
+    border-color: rgba(255, 107, 53, 1);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 14px 30px rgba(255, 107, 53, 0.28);
+}
+
+.lightbox-prev:focus-visible,
+.lightbox-next:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.3), 0 10px 24px rgba(0, 0, 0, 0.28);
+}
+
+.lightbox-prev:active,
+.lightbox-next:active {
+    transform: translateY(0) scale(0.98);
 }
 
 @keyframes fadeIn {
@@ -685,6 +710,18 @@ body {
     .portfolio,
     .contact {
         padding: 50px 0;
+    }
+
+    .lightbox-nav {
+        gap: 18px;
+        margin-top: 16px;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        width: 48px;
+        height: 48px;
+        font-size: 22px;
     }
 
     .portfolio {
