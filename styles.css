@@ -597,8 +597,73 @@ body {
         grid-template-columns: 1fr;
     }
 
+    .portfolio {
+        padding: 56px 0;
+    }
+
+    .portfolio h2 {
+        margin-bottom: 18px;
+        font-size: 28px;
+    }
+
+    .portfolio-categories {
+        gap: 12px;
+    }
+
+    .portfolio-category {
+        border-radius: 18px;
+        overflow: hidden;
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .category-header {
+        padding: 14px 16px;
+        gap: 10px;
+    }
+
+    .category-header h3 {
+        font-size: 17px;
+    }
+
+    .portfolio-count {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
     .portfolio-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .portfolio-item {
+        border-radius: 12px;
+        box-shadow: none;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .portfolio-image {
+        height: 110px;
+    }
+
+    .portfolio-caption {
+        padding: 10px 10px 11px;
+        font-size: 12px;
+        line-height: 1.25;
+        min-height: 44px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .marketplace-category .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .marketplace-category .portfolio-image {
+        height: 110px;
     }
 }
 
@@ -620,5 +685,51 @@ body {
     .portfolio,
     .contact {
         padding: 50px 0;
+    }
+
+    .portfolio {
+        padding: 48px 0;
+    }
+
+    .portfolio-categories {
+        gap: 10px;
+    }
+
+    .portfolio-category {
+        border-radius: 16px;
+    }
+
+    .category-header {
+        padding: 12px 14px;
+    }
+
+    .category-header h3 {
+        font-size: 16px;
+    }
+
+    .portfolio-grid,
+    .marketplace-category .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .portfolio-image {
+        height: 96px;
+    }
+
+    .portfolio-caption {
+        padding: 8px 8px 9px;
+        font-size: 11px;
+        min-height: 40px;
+    }
+
+    .portfolio-image,
+    .marketplace-category .portfolio-image {
+        height: 96px;
+    }
+
+    .portfolio-count {
+        font-size: 11px;
+        padding: 4px 8px;
     }
 }
