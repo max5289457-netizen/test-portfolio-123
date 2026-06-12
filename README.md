@@ -109,6 +109,8 @@
 <meta name="author" content="Макс Водяной">
 ```
 
+Также в корне проекта уже должны быть `robots.txt` и `sitemap.xml`. После деплоя отправьте главную страницу в Google Search Console и Яндекс Вебмастер.
+
 ## Поддержка браузеров
 
 ✅ Chrome/Edge 90+

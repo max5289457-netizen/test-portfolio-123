@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
     // Инициализация портфолио картинок
     initPortfolioGallery();
     
-    // Инициализация категорий портфолио
-    initCategoryFolders();
-    
     // Обработчики для Lightbox
     const lightbox = document.getElementById('lightbox');
     const lightboxClose = document.querySelector('.lightbox-close');
@@ -222,49 +219,3 @@ ${message}
     });
 }
 
-// Инициализация категорий портфолио (раскрывающиеся папки)
-function initCategoryFolders() {
-    const folders = document.querySelectorAll('.category-folder');
-    
-    folders.forEach(folder => {
-        const header = folder.querySelector('.folder-header');
-        const content = folder.querySelector('.folder-content');
-        
-        header.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // Закрыть все остальные папки
-            folders.forEach(f => {
-                if (f !== folder) {
-                    f.classList.remove('open');
-                    f.querySelector('.folder-content').style.display = 'none';
-                }
-            });
-            
-            // Открыть/закрыть текущую папку
-            folder.classList.toggle('open');
-            if (content.style.display === 'none') {
-                content.style.display = 'block';
-            } else {
-                content.style.display = 'none';
-            }
-        });
-        
-        // Инициализация галереи в этой папке
-        const images = content.querySelectorAll('.portfolio-image img');
-        images.forEach((img, index) => {
-            img.addEventListener('click', function() {
-                // Пересчитываем индекс с учётом всех картинок
-                const allImages = document.querySelectorAll('.portfolio-image img');
-                let globalIndex = 0;
-                for (let i = 0; i < allImages.length; i++) {
-                    if (allImages[i] === img) {
-                        globalIndex = i;
-                        break;
-                    }
-                }
-                openLightbox(globalIndex);
-            });
-        });
-    });
-}

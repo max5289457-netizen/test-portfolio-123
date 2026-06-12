@@ -1,0 +1,12 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="40" fill="#13284E"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" stroke="#FFFFFF" stroke-width="8"/>
+  <text x="90" y="180" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">ART BAZAR 2</text>
+  <text x="90" y="260" fill="#BBCCFF" font-family="Arial, Helvetica, sans-serif" font-size="34">Визуальная карточка</text>
+  <rect x="90" y="340" width="1020" height="300" rx="24" fill="#0F1F3A" stroke="#FFFFFF" stroke-width="4"/>
+  <rect x="160" y="390" width="300" height="200" rx="20" fill="#FF7A59"/>
+  <rect x="500" y="390" width="300" height="200" rx="20" fill="#6EE7F9"/>
+  <rect x="840" y="390" width="190" height="200" rx="20" fill="#F5D76E"/>
+  <text x="520" y="460" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="42">Две видимые карточки</text>
+  <text x="520" y="520" fill="#DDE8FF" font-family="Arial, Helvetica, sans-serif" font-size="28">Теперь ART BAZAR отображается корректно</text>
+</svg>

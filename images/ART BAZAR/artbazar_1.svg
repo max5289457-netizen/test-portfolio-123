@@ -1,0 +1,11 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" rx="40" fill="#0F1F3A"/>
+  <rect x="40" y="40" width="1120" height="720" rx="28" stroke="#FFFFFF" stroke-width="8"/>
+  <text x="90" y="180" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="72" font-weight="700">ART BAZAR 1</text>
+  <text x="90" y="260" fill="#BBCCFF" font-family="Arial, Helvetica, sans-serif" font-size="34">Визуальная карточка</text>
+  <rect x="90" y="340" width="1020" height="300" rx="24" fill="#13284E" stroke="#FFFFFF" stroke-width="4"/>
+  <circle cx="260" cy="490" r="80" fill="#FFB84D"/>
+  <path d="M200 560C260 500 320 500 380 560" stroke="#FFFFFF" stroke-width="10" stroke-linecap="round"/>
+  <text x="520" y="460" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="42">Графический блок</text>
+  <text x="520" y="520" fill="#DDE8FF" font-family="Arial, Helvetica, sans-serif" font-size="28">Подходит для визуального наполнения портфолио</text>
+</svg>
