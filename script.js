@@ -28,11 +28,20 @@ if (currentYear) {
 }
 
 if (themeToggle) {
-  themeToggle.setAttribute('aria-checked', String(document.documentElement.dataset.theme === 'dark'));
+  const updateThemeControl = () => {
+    const isDark = document.documentElement.dataset.theme === 'dark';
+    const label = isDark ? 'Включить светлую тему' : 'Включить тёмную тему';
+    themeToggle.classList.toggle('is-dark', isDark);
+    themeToggle.setAttribute('aria-checked', String(isDark));
+    themeToggle.setAttribute('aria-label', label);
+    themeToggle.title = label;
+  };
+
+  updateThemeControl();
   themeToggle.addEventListener('click', () => {
     const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
     document.documentElement.dataset.theme = nextTheme;
-    themeToggle.setAttribute('aria-checked', String(nextTheme === 'dark'));
+    updateThemeControl();
 
     try {
       localStorage.setItem('max-portfolio-theme', nextTheme);
@@ -48,15 +57,25 @@ if (navToggle && mainNav) {
     navToggle.classList.toggle('is-open', isOpen);
     navToggle.setAttribute('aria-expanded', String(isOpen));
   });
+}
 
-  navLinks.forEach((link) => {
-    link.addEventListener('click', () => {
+navLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    const target = targetId ? document.querySelector(targetId) : null;
+
+    if (target) {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    if (navToggle && mainNav) {
       mainNav.classList.remove('is-open');
       navToggle.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
-    });
+    }
   });
-}
+});
 
 const sections = document.querySelectorAll('section[id]');
 const navMap = Array.from(navLinks).reduce((obj, link) => {
