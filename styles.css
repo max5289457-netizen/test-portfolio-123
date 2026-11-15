@@ -1121,6 +1121,10 @@ section[id] {
     box-shadow: var(--shadow);
   }
 
+  :root[data-theme='dark'] .main-nav {
+    background: #151d26;
+  }
+
   .main-nav a {
     width: 100%;
     min-height: 46px;
