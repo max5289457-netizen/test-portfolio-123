@@ -1,291 +1,501 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Макс Водяной - Портфолио Дизайнера</title>
-    <meta name="description" content="Портфолио Макса Водяного: дизайн, UI/UX, брендирование, иллюстрации и веб-разработка.">
-    <meta name="author" content="Макс Водяной">
-    <meta name="robots" content="index,follow">
-    <link rel="canonical" href="https://portfolio-khaki-psi-exn0iua8f5.vercel.app/">
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Макс Водяной - Портфолио Дизайнера">
-    <meta property="og:description" content="Портфолио Макса Водяного: дизайн, UI/UX, брендирование, иллюстрации и веб-разработка.">
-    <meta property="og:url" content="https://portfolio-khaki-psi-exn0iua8f5.vercel.app/">
-    <meta property="og:image" content="https://portfolio-khaki-psi-exn0iua8f5.vercel.app/images/2_683.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- Навигация -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">
-                <span class="logo-text">MAX</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MAX — дизайнер и веб-разработчик</title>
+    <meta
+      name="description"
+      content="Макс создаёт современные сайты, UI/UX и визуальные решения для бизнеса. Портфолио, услуги, кейсы и возможность обсудить проект."
+    />
+    <meta name="author" content="Макс" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="MAX — дизайнер и веб-разработчик" />
+    <meta
+      property="og:description"
+      content="Создаю сайты и визуальные решения для бизнеса — от концепции и дизайна до адаптивной разработки."
+    />
+    <meta property="og:image" content="images/2_683.jpg" />
+    <meta property="og:url" content="https://example.com/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <a class="brand" href="#top" aria-label="Главная">MAX</a>
+
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-label="Открыть меню">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+
+        <nav class="main-nav" aria-label="Главная навигация">
+          <a href="#about">Обо мне</a>
+          <a href="#services">Услуги</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="#process">Как я работаю</a>
+          <a href="#contact">Контакты</a>
+        </nav>
+
+        <a class="button button-primary nav-cta" href="#contact">Обсудить проект</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="top">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <p class="eyebrow">Дизайн и веб-разработка для бизнеса</p>
+            <h1>Создаю сайты и визуальные решения для бизнеса</h1>
+            <p class="lead">
+              Разрабатываю современные сайты и дизайн, которые помогают компаниям выделяться,
+              вызывать доверие и привлекать клиентов.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button button-primary" href="#portfolio">Посмотреть работы</a>
+              <a class="button button-secondary" href="#contact">Обсудить проект</a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#about">Обо мне</a></li>
-                <li><a href="#portfolio">Работы</a></li>
-                <li><a href="#contact">Контакты</a></li>
+
+            <ul class="hero-list" aria-label="Основные направления работы">
+              <li>Сайты</li>
+              <li>UI/UX</li>
+              <li>Графический дизайн</li>
             </ul>
-        </div>
-    </nav>
+          </div>
 
-    <!-- Герой секция -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Макс Водяной</h1>
-                <p class="subtitle">Дизайнер с опытом 1+ года</p>
-                <p class="description">Создаю уникальные дизайны под твои запросы</p>
-                <a href="#contact" class="btn btn-primary">Связаться</a>
+          <div class="hero-visual" aria-label="Примеры работ">
+            <div class="project-preview preview-one">
+              <span class="badge">UI/UX</span>
+              <img src="images/Монтажная область 1.png" alt="Превью проекта для кофе" />
             </div>
-        </div>
-    </section>
-
-    <!-- Обо мне -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2>Обо мне</h2>
-            <div class="about-content">
-                <div class="about-image">
-                    <img src="images/2_683.jpg" alt="Макс Водяной">
-                </div>
-                <div class="about-text-section">
-                    <div class="about-text">
-                        <p>Я начинающий дизайнер и веб-разработчик, который создаёт современные, стильные и удобные проекты. Внимателен к деталям и всегда стараюсь довести работу до отличного результата.</p>
-                        <p>Занимаюсь дизайном и разработкой сайтов: могу не только создать красивый визуал, но и реализовать его в рабочий адаптивный сайт. Люблю экспериментировать со стилями, анимациями и интерфейсами, делая проекты привлекательными и удобными для пользователей.</p>
-                        <p>Легко адаптируюсь под задачи клиента, открыт к новым идеям и всегда на связи во время работы над проектом.</p>
-                    </div>
-                    <div class="about-skills">
-                        <h3>Мои навыки</h3>
-                        <div class="skills-list">
-                            <span class="skill">Логотип</span>
-                            <span class="skill">Брендирование</span>
-                            <span class="skill">UI/UX</span>
-                            <span class="skill">Иллюстрации</span>
-                            <span class="skill">Макеты</span>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-preview preview-two">
+              <span class="badge">Brand</span>
+              <img src="images/Проект_буклет.jpg" alt="Превью буклета" />
             </div>
-        </div>
-    </section>
-
-    <!-- Портфолио -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2>Мои работы</h2>
-            <div class="portfolio-categories">
-                <div class="portfolio-category">
-                    <div class="category-header">
-                        <h3>AWAKE — кофейня</h3>
-                        <span class="portfolio-count">8 работ</span>
-                    </div>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Первый проект.jpg" alt="Первый проект">
-                            </div>
-                            <p class="portfolio-caption">Пост</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Второй проект.jpg" alt="Второй проект">
-                            </div>
-                            <p class="portfolio-caption">Пост</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Третий проект.jpg" alt="Третий проект">
-                            </div>
-                            <p class="portfolio-caption">Пост</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Четвёртый проект.jpg" alt="Четвёртый проект">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых вкусах пончиков</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Пятый проект.jpg" alt="Пятый проект">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых вкусах пончиков</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Шестой проект.jpg" alt="Шестой проект">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых вкусах пончиков</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Проект_буклет_2.jpg" alt="Проект_буклет_2">
-                            </div>
-                            <p class="portfolio-caption">Разворотный буклет</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Проект_буклет.jpg" alt="Проект_буклет">
-                            </div>
-                            <p class="portfolio-caption">Разворотный буклет</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-category">
-                    <div class="category-header">
-                        <h3>ART BAZAR</h3>
-                        <span class="portfolio-count">2 работы</span>
-                    </div>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/ART BAZAR/Слой 2.png" alt="Буклет ART BAZAR 1">
-                            </div>
-                            <p class="portfolio-caption">Буклет</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/ART BAZAR/Слой 3 (2).png" alt="Буклет ART BAZAR 2">
-                            </div>
-                            <p class="portfolio-caption">Буклет</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-category">
-                    <div class="category-header">
-                        <h3>COFIX — кофейня</h3>
-                        <span class="portfolio-count">4 работы</span>
-                    </div>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Монтажная область 1.png" alt="COFIX 1">
-                            </div>
-                            <p class="portfolio-caption">Билет на выставку</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Слой 1 (2).png" alt="COFIX 2">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых позициях</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Слой 1 (3).png" alt="COFIX 3">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых позициях</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Ресурс 1.png" alt="COFIX 4">
-                            </div>
-                            <p class="portfolio-caption">Карточка с информацией о новых позициях</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="portfolio-category marketplace-category">
-                    <div class="category-header">
-                        <h3>Карточки для маркетплейсов</h3>
-                        <span class="portfolio-count">5 работ</span>
-                    </div>
-                    <div class="portfolio-grid">
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Карточка книги.png" alt="Карточка книги">
-                            </div>
-                            <p class="portfolio-caption">Карточка книги</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Карточка носков.jpg" alt="Карточка носков">
-                            </div>
-                            <p class="portfolio-caption">Карточка носков</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Карточка шорт.jpg" alt="Карточка шорт">
-                            </div>
-                            <p class="portfolio-caption">Карточка шорт</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/Карточка.png" alt="Карточка">
-                            </div>
-                            <p class="portfolio-caption">Карточка</p>
-                        </div>
-                        <div class="portfolio-item">
-                            <div class="portfolio-image">
-                                <img src="images/карточки для маркетплейсов/project8.jpg" alt="Саморезы">
-                            </div>
-                            <p class="portfolio-caption">Саморезы</p>
-                        </div>
-                    </div>
-                </div>
+            <div class="project-preview preview-three">
+              <span class="badge">Digital</span>
+              <img src="images/Первый проект.jpg" alt="Превью социальных материалов" />
             </div>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <!-- Контакты -->
-    <section id="contact" class="contact">
+      <section class="section about" id="about">
         <div class="container">
-            <h2>Связаться со мной</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h3>Email</h3>
-                        <a href="mailto:max5289457@gmail.com">max5289457@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Телефон</h3>
-                        <a href="tel:+996553705707">+996 553 705 707</a>
-                    </div>
-                    <div class="contact-item">
-                        <h3>Соцсети</h3>
-                        <a href="https://t.me/vodmaks" target="_blank" class="btn btn-secondary">Написать в Telegram</a>
-                    </div>
-                </div>
+          <div class="section-heading">
+            <p class="eyebrow">Обо мне</p>
+            <h2>Дизайн, который сочетает эстетику, удобство и бизнес-цель.</h2>
+          </div>
 
-                <form class="contact-form" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Ваш email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Ваше сообщение" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Отправить</button>
-                </form>
+          <div class="about-grid">
+            <div class="about-photo">
+              <img src="images/2_683.jpg" alt="Макс" />
             </div>
-        </div>
-    </section>
 
-    <!-- Футер -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Макс Водяной. Все права защищены.</p>
+            <div class="about-copy">
+              <p>
+                Меня зовут Макс. Я дизайнер и начинающий веб-разработчик. Создаю визуальные
+                решения, разрабатываю современные сайты и помогаю бизнесу представить свои
+                продукты и услуги в интернете.
+              </p>
+              <p>
+                В работе для меня важны эстетика, удобство, внимание к деталям и понимание задач
+                клиента. Я постоянно развиваюсь, изучаю новые инструменты и совершенствую свои
+                навыки.
+              </p>
+
+              <div class="tool-grid">
+                <span>Figma</span>
+                <span>HTML</span>
+                <span>CSS</span>
+                <span>JavaScript</span>
+                <span>Photoshop</span>
+                <span>Illustrator</span>
+              </div>
+
+              <div class="principles">
+                <article>
+                  <strong>Внимание к деталям</strong>
+                  <p>Каждый элемент продуман, чтобы визуальная система выглядела целостно.</p>
+                </article>
+                <article>
+                  <strong>Простота и ясность</strong>
+                  <p>Сайт должен быть понятным, удобным и эффективным для клиента и его аудитории.</p>
+                </article>
+                <article>
+                  <strong>Бизнес-ориентированность</strong>
+                  <p>Дизайн и разработка служат не только красоте, но и достижению реальных целей.</p>
+                </article>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
+
+      <section class="section services" id="services">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow">Услуги</p>
+            <h2>Решения, которые помогают бизнесу выглядеть профессионально.</h2>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-icon">01</div>
+              <h3>Создание сайтов</h3>
+              <p>
+                Разрабатываю современные и адаптивные сайты для бизнеса, которые помогают
+                представить компанию, услуги и продукты в интернете.
+              </p>
+              <ul>
+                <li>Лендинги</li>
+                <li>Сайты-визитки</li>
+                <li>Корпоративные сайты</li>
+                <li>Сайты-каталоги</li>
+                <li>Сайты для малого бизнеса</li>
+              </ul>
+              <a href="#contact" class="text-link">Обсудить проект</a>
+            </article>
+
+            <article class="service-card accent-card">
+              <div class="service-icon">02</div>
+              <h3>Веб-дизайн и UI/UX</h3>
+              <p>
+                Проектирую удобные и эстетичные интерфейсы, уделяя внимание структуре,
+                визуальной иерархии и пользовательскому опыту.
+              </p>
+              <ul>
+                <li>Дизайн сайтов</li>
+                <li>Дизайн интерфейсов</li>
+                <li>Прототипирование</li>
+                <li>Проектирование сценариев</li>
+                <li>Адаптивные макеты</li>
+              </ul>
+              <a href="#contact" class="text-link">Обсудить проект</a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-icon">03</div>
+              <h3>Графический дизайн</h3>
+              <p>
+                Создаю визуальные материалы, которые помогают брендам профессионально
+                представлять себя и свои продукты.
+              </p>
+              <ul>
+                <li>Карточки товаров</li>
+                <li>Инфографика</li>
+                <li>Баннеры</li>
+                <li>Рекламные материалы</li>
+                <li>Публикации в соцсетях</li>
+              </ul>
+              <a href="#contact" class="text-link">Обсудить проект</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section process" id="process">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow">Как я работаю</p>
+            <h2>Прозрачный и понятный процесс сотрудничества.</h2>
+          </div>
+
+          <div class="process-grid">
+            <article class="process-step">
+              <span class="step-number">01</span>
+              <h3>Знакомство и обсуждение</h3>
+              <p>Обсуждаем вашу задачу, цели проекта, пожелания и необходимые функции.</p>
+            </article>
+
+            <article class="process-step">
+              <span class="step-number">02</span>
+              <h3>Планирование и дизайн</h3>
+              <p>Продумываю структуру, визуальную концепцию и пользовательский опыт.</p>
+            </article>
+
+            <article class="process-step">
+              <span class="step-number">03</span>
+              <h3>Разработка</h3>
+              <p>Реализую проект, адаптирую его под разные устройства и проверяю функциональность.</p>
+            </article>
+
+            <article class="process-step">
+              <span class="step-number">04</span>
+              <h3>Передача проекта</h3>
+              <p>Проверяю результат, вношу согласованные корректировки и передаю проект клиенту.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section advantages">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow">Преимущества</p>
+            <h2>Почему со мной удобно работать.</h2>
+          </div>
+
+          <div class="advantages-grid">
+            <article class="advantage-item">
+              <h3>Индивидуальный подход</h3>
+              <p>Каждый проект рассматривается с учётом вашего бизнеса, аудитории и задач.</p>
+            </article>
+            <article class="advantage-item">
+              <h3>Внимание к деталям</h3>
+              <p>Я слежу за визуальной согласованностью, типографикой и удобством интерфейса.</p>
+            </article>
+            <article class="advantage-item">
+              <h3>Современный стиль</h3>
+              <p>Работы оформлены в актуальном минималистичном направлении с сильной визуальной иерархией.</p>
+            </article>
+            <article class="advantage-item">
+              <h3>Мобильная адаптация</h3>
+              <p>Всё отображается корректно на смартфонах, планшетах и компьютерах.</p>
+            </article>
+            <article class="advantage-item">
+              <h3>Понятная коммуникация</h3>
+              <p>Не оставляю клиента в неясности: фиксируем задачи, решения и этапы работы.</p>
+            </article>
+            <article class="advantage-item">
+              <h3>Ответственность</h3>
+              <p>Соблюдаю сроки, подхожу к задаче серьёзно и стараюсь довести результат до высокого уровня.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section portfolio" id="portfolio">
+        <div class="container">
+          <div class="section-heading center">
+            <p class="eyebrow">Портфолио</p>
+            <h2>Работы, которые отражают стиль, подход и качество решений.</h2>
+          </div>
+
+          <div class="portfolio-filters" aria-label="Фильтр работ">
+            <button class="filter-button active" data-filter="all" type="button">Все работы</button>
+            <button class="filter-button" data-filter="web-design" type="button">Веб-дизайн</button>
+            <button class="filter-button" data-filter="graphic-design" type="button">Графический дизайн</button>
+            <button class="filter-button" data-filter="marketplace" type="button">Карточки товаров</button>
+            <button class="filter-button" data-filter="branding" type="button">Брендинг</button>
+          </div>
+
+          <div class="portfolio-grid">
+            <article
+              class="project-card"
+              data-title="AWAKE — кофейня"
+              data-category="branding"
+              data-description="Кампейн для кофейни с визуальным стилем, гармоничной типографикой и контентом для социальных сетей."
+              data-images="images/Первый проект.jpg|images/Второй проект.jpg|images/Третий проект.jpg|images/Проект_буклет.jpg"
+            >
+              <div class="project-thumb">
+                <img src="images/Первый проект.jpg" alt="AWAKE — кофейня" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Брендинг</span>
+                <h3>AWAKE — кофейня</h3>
+                <p>Кофейный бренд с визуальным стилем и социальным контентом.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-title="ART BAZAR"
+              data-category="graphic-design"
+              data-description="Серия рекламных материалов и буклетов для культурного события и арт-мероприятия."
+              data-images="images/ART BAZAR/Слой 2.png|images/ART BAZAR/Слой 3 (2).png"
+            >
+              <div class="project-thumb">
+                <img src="images/ART BAZAR/Слой 2.png" alt="ART BAZAR" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Графический дизайн</span>
+                <h3>ART BAZAR</h3>
+                <p>Буклеты и рекламные материалы для арт-мероприятия.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-title="COFIX"
+              data-category="branding"
+              data-description="Дизайн материалов для кофейной сети в современном минималистичном стиле."
+              data-images="images/Монтажная область 1.png|images/Слой 1 (2).png|images/Слой 1 (3).png|images/Ресурс 1.png"
+            >
+              <div class="project-thumb">
+                <img src="images/Монтажная область 1.png" alt="COFIX" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Брендинг</span>
+                <h3>COFIX</h3>
+                <p>Визуальная система для кофейного бренда и рекламных карточек.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-title="Карточки товаров"
+              data-category="marketplace"
+              data-description="Минималистичные карточки товаров для маркетплейсов с акцентом на читаемость и продающий визуал."
+              data-images="images/Карточка книги.png|images/Карточка носков.jpg|images/Карточка шорт.jpg|images/Карточка.png"
+            >
+              <div class="project-thumb">
+                <img src="images/Карточка книги.png" alt="Карточки товаров" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Карточки товаров</span>
+                <h3>Карточки товаров</h3>
+                <p>Серия продающих карточек для маркетплейсов.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-title="Социальные публикации"
+              data-category="graphic-design"
+              data-description="Подборка визуальных публикаций и рекламных элементов для брендовых акций."
+              data-images="images/Четвёртый проект.jpg|images/Пятый проект.jpg|images/Шестой проект.jpg"
+            >
+              <div class="project-thumb">
+                <img src="images/Четвёртый проект.jpg" alt="Социальные публикации" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Графический дизайн</span>
+                <h3>Социальные публикации</h3>
+                <p>Рекламные материалы и посты для продвижения бренда.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              data-title="Разворотный буклет"
+              data-category="graphic-design"
+              data-description="Буклет для кофейного бренда с акцентом на продукт, атмосферу и позиционирование."
+              data-images="images/Проект_буклет_2.jpg|images/Проект_буклет.jpg"
+            >
+              <div class="project-thumb">
+                <img src="images/Проект_буклет_2.jpg" alt="Разворотный буклет" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Графический дизайн</span>
+                <h3>Разворотный буклет</h3>
+                <p>Промо-материал с продуманной подачей информации.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section contact" id="contact">
+        <div class="container contact-shell">
+          <div class="contact-copy">
+            <p class="eyebrow">Контакты</p>
+            <h2>Есть идея для проекта? Давайте обсудим.</h2>
+            <p class="lead-small">
+              Расскажите о своей задаче, и мы обсудим, как воплотить её в жизнь.
+            </p>
+
+            <div class="contact-list">
+              <a href="mailto:max5289457@gmail.com">max5289457@gmail.com</a>
+              <a href="tel:+996553705707">+996 553 705 707</a>
+              <a href="https://t.me/vodmaks" target="_blank" rel="noreferrer">Telegram</a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+            </div>
+          </div>
+
+          <form id="leadForm" class="lead-form" novalidate>
+            <div class="field-row">
+              <label>
+                <span>Имя</span>
+                <input type="text" name="name" placeholder="Ваше имя" required />
+              </label>
+              <label>
+                <span>Контакт для связи</span>
+                <input type="text" name="contact" placeholder="Telegram, email или телефон" required />
+              </label>
+            </div>
+
+            <div class="field-row">
+              <label>
+                <span>Тип проекта</span>
+                <select name="projectType" required>
+                  <option value="">Выберите тип</option>
+                  <option value="Landing page">Landing page</option>
+                  <option value="Сайт-визитка">Сайт-визитка</option>
+                  <option value="Корпоративный сайт">Корпоративный сайт</option>
+                  <option value="UI/UX Design">UI/UX Design</option>
+                  <option value="Графический дизайн">Графический дизайн</option>
+                  <option value="Другое">Другое</option>
+                </select>
+              </label>
+
+              <label>
+                <span>Примерный бюджет</span>
+                <select name="budget">
+                  <option value="">Не указан</option>
+                  <option value="до 150 000 сом">до 150 000 сом</option>
+                  <option value="150 000–300 000 сом">150 000–300 000 сом</option>
+                  <option value="300 000–600 000 сом">300 000–600 000 сом</option>
+                  <option value="более 600 000 сом">более 600 000 сом</option>
+                </select>
+              </label>
+            </div>
+
+            <label>
+              <span>Описание задачи</span>
+              <textarea name="description" rows="5" placeholder="Расскажите, что нужно сделать..." required></textarea>
+            </label>
+
+            <button class="button button-primary submit-button" type="submit">Отправить заявку</button>
+            <p class="form-status" id="formStatus" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <a class="brand brand-footer" href="#top">MAX</a>
+          <p>Дизайн и разработка, которые помогают бизнесу выглядеть профессионально.</p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#about">Обо мне</a>
+          <a href="#services">Услуги</a>
+          <a href="#portfolio">Портфолио</a>
+          <a href="#contact">Контакты</a>
+        </nav>
+
+        <div class="footer-contacts">
+          <a href="mailto:max5289457@gmail.com">max5289457@gmail.com</a>
+          <a href="https://t.me/vodmaks" target="_blank" rel="noreferrer">Telegram</a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
+        </div>
+      </div>
+      <div class="container copyright">© <span id="currentYear"></span> MAX</div>
     </footer>
 
-    <!-- Модальное окно для галереи -->
-    <div id="lightbox" class="lightbox">
-        <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
-            <img id="lightbox-image" src="" alt="">
-            <div class="lightbox-nav">
-                <button class="lightbox-prev">❮</button>
-                <button class="lightbox-next">❯</button>
-            </div>
+    <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+      <div class="modal-dialog">
+        <button class="modal-close" type="button" aria-label="Закрыть">×</button>
+        <div class="modal-visual">
+          <button class="modal-nav modal-prev" type="button" aria-label="Предыдущий проект">‹</button>
+          <img id="modalImage" src="" alt="" />
+          <button class="modal-nav modal-next" type="button" aria-label="Следующий проект">›</button>
         </div>
+        <div class="modal-copy">
+          <span class="project-tag" id="modalCategory">Графический дизайн</span>
+          <h3 id="modalTitle">Название проекта</h3>
+          <p id="modalDescription">Описание проекта</p>
+        </div>
+      </div>
     </div>
-
-    <script src="script.js"></script>
-</body>
+  </body>
 </html>

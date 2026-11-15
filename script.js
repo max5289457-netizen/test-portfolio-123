@@ -1,221 +1,200 @@
-// Галерея с Lightbox
-let currentImageIndex = 0;
-let portfolioImages = [];
-let touchStartX = 0;
-let touchEndX = 0;
+const navToggle = document.querySelector('.nav-toggle');
+const mainNav = document.querySelector('.main-nav');
+const navLinks = document.querySelectorAll('.main-nav a');
+const filterButtons = document.querySelectorAll('.filter-button');
+const projectCards = document.querySelectorAll('.project-card');
+const currentYear = document.getElementById('currentYear');
+const leadForm = document.getElementById('leadForm');
+const formStatus = document.getElementById('formStatus');
+const modal = document.getElementById('projectModal');
+const modalImage = document.getElementById('modalImage');
+const modalTitle = document.getElementById('modalTitle');
+const modalCategory = document.getElementById('modalCategory');
+const modalDescription = document.getElementById('modalDescription');
+const modalClose = document.querySelector('.modal-close');
+const modalPrev = document.querySelector('.modal-prev');
+const modalNext = document.querySelector('.modal-next');
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Инициализация портфолио картинок
-    initPortfolioGallery();
-    
-    // Обработчики для Lightbox
-    const lightbox = document.getElementById('lightbox');
-    const lightboxClose = document.querySelector('.lightbox-close');
-    const lightboxPrev = document.querySelector('.lightbox-prev');
-    const lightboxNext = document.querySelector('.lightbox-next');
-    const lightboxContent = document.querySelector('.lightbox-content');
-    
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightboxPrev.addEventListener('click', showPrevImage);
-    lightboxNext.addEventListener('click', showNextImage);
-    
-    // Обработчики для свайпа
-    lightboxContent.addEventListener('touchstart', handleSwipeStart, false);
-    lightboxContent.addEventListener('touchend', handleSwipeEnd, false);
-    
-    // Закрытие при клике на фон
-    lightbox.addEventListener('click', function(e) {
-        if (e.target === lightbox) {
-            closeLightbox();
-        }
+let modalImages = [];
+let modalIndex = 0;
+
+if (currentYear) {
+  currentYear.textContent = new Date().getFullYear();
+}
+
+if (navToggle && mainNav) {
+  navToggle.addEventListener('click', () => {
+    const isOpen = mainNav.classList.toggle('is-open');
+    navToggle.classList.toggle('is-open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
+      mainNav.classList.remove('is-open');
+      navToggle.classList.remove('is-open');
+      navToggle.setAttribute('aria-expanded', 'false');
     });
-    
-    // Навигация с клавиатурой
-    document.addEventListener('keydown', function(e) {
-        if (lightbox.classList.contains('active')) {
-            if (e.key === 'ArrowLeft') showPrevImage();
-            if (e.key === 'ArrowRight') showNextImage();
-            if (e.key === 'Escape') closeLightbox();
-        }
+  });
+}
+
+const sections = document.querySelectorAll('section[id]');
+const navMap = Array.from(navLinks).reduce((obj, link) => {
+  obj[link.getAttribute('href')] = link;
+  return obj;
+}, {});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      const id = `#${entry.target.id}`;
+      if (navMap[id]) {
+        navLinks.forEach((link) => link.classList.toggle('active', link === navMap[id]));
+      }
     });
+  },
+  { threshold: 0.45 }
+);
+
+sections.forEach((section) => observer.observe(section));
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const filter = button.dataset.filter;
+
+    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+
+    projectCards.forEach((card) => {
+      const matches = filter === 'all' || card.dataset.category === filter;
+      card.classList.toggle('is-hidden', !matches);
+    });
+  });
 });
 
-function handleSwipeStart(e) {
-    touchStartX = e.changedTouches[0].screenX;
-}
+const openProjectModal = (card) => {
+  const images = card.dataset.images ? card.dataset.images.split('|') : [card.querySelector('img').src];
+  modalImages = images.filter(Boolean);
+  modalIndex = 0;
+  modalTitle.textContent = card.dataset.title || 'Название проекта';
+  modalCategory.textContent = card.dataset.category || 'Проект';
+  modalDescription.textContent = card.dataset.description || 'Описание проекта';
+  updateModalImage();
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+};
 
-function handleSwipeEnd(e) {
-    touchEndX = e.changedTouches[0].screenX;
-    handleSwipe();
-}
+const closeProjectModal = () => {
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+};
 
-function handleSwipe() {
-    const swipeThreshold = 50;
-    const diff = touchStartX - touchEndX;
-    
-    if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-            // Свайп влево — показать следующую картинку
-            showNextImage();
-        } else {
-            // Свайп вправо — показать предыдущую картинку
-            showPrevImage();
-        }
+const updateModalImage = () => {
+  if (!modalImages.length) return;
+  const imagePath = modalImages[modalIndex];
+  modalImage.src = imagePath;
+  modalImage.alt = modalTitle.textContent;
+};
+
+projectCards.forEach((card) => {
+  const image = card.querySelector('img');
+  if (image) {
+    image.addEventListener('click', () => openProjectModal(card));
+  }
+
+  card.addEventListener('click', (event) => {
+    if (event.target === card || event.target.closest('.project-body')) {
+      openProjectModal(card);
     }
-}
-
-function initPortfolioGallery() {
-    // Собираем все картинки портфолио (включая те что в папках)
-    const images = document.querySelectorAll('.portfolio-image img');
-    portfolioImages = Array.from(images).map(img => ({
-        src: img.src,
-        alt: img.alt
-    }));
-    
-    images.forEach((img, index) => {
-        img.addEventListener('click', function() {
-            openLightbox(index);
-        });
-    });
-}
-
-function openLightbox(index) {
-    currentImageIndex = index;
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightbox-image');
-    
-    lightboxImage.src = portfolioImages[index].src;
-    lightboxImage.alt = portfolioImages[index].alt;
-    lightbox.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function closeLightbox() {
-    const lightbox = document.getElementById('lightbox');
-    lightbox.classList.remove('active');
-    document.body.style.overflow = 'auto';
-}
-
-function showNextImage() {
-    currentImageIndex = (currentImageIndex + 1) % portfolioImages.length;
-    const lightboxImage = document.getElementById('lightbox-image');
-    lightboxImage.src = portfolioImages[currentImageIndex].src;
-    lightboxImage.alt = portfolioImages[currentImageIndex].alt;
-}
-
-function showPrevImage() {
-    currentImageIndex = (currentImageIndex - 1 + portfolioImages.length) % portfolioImages.length;
-    const lightboxImage = document.getElementById('lightbox-image');
-    lightboxImage.src = portfolioImages[currentImageIndex].src;
-    lightboxImage.alt = portfolioImages[currentImageIndex].alt;
-}
-
-// Плавный скролл для навигационных ссылок
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        const target = document.querySelector(href);
-        if (href !== '#' && target) {
-            e.preventDefault();
-            target.scrollIntoView({ behavior: 'smooth' });
-        }
-    });
+  });
 });
 
-// Добавляем эффект при прокрутке страницы
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.15)';
-    } else {
-        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    }
+if (modalClose) {
+  modalClose.addEventListener('click', closeProjectModal);
+}
+
+if (modalPrev) {
+  modalPrev.addEventListener('click', () => {
+    modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+    updateModalImage();
+  });
+}
+
+if (modalNext) {
+  modalNext.addEventListener('click', () => {
+    modalIndex = (modalIndex + 1) % modalImages.length;
+    updateModalImage();
+  });
+}
+
+if (modal) {
+  modal.addEventListener('click', (event) => {
+    if (event.target === modal) closeProjectModal();
+  });
+}
+
+document.addEventListener('keydown', (event) => {
+  if (!modal.classList.contains('is-open')) return;
+
+  if (event.key === 'Escape') closeProjectModal();
+  if (event.key === 'ArrowRight') {
+    modalIndex = (modalIndex + 1) % modalImages.length;
+    updateModalImage();
+  }
+  if (event.key === 'ArrowLeft') {
+    modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+    updateModalImage();
+  }
 });
 
-// Обработка формы контакта через Telegram Bot
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-    // Обработчик для отправки при Enter в полях ввода (кроме textarea)
-    const inputs = contactForm.querySelectorAll('input[type="text"], input[type="email"]');
-    inputs.forEach(input => {
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                contactForm.dispatchEvent(new Event('submit'));
-            }
-        });
-    });
-    
-    // Для textarea: Ctrl+Enter отправляет форму
-    const textarea = contactForm.querySelector('textarea');
-    if (textarea) {
-        textarea.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
-                e.preventDefault();
-                contactForm.dispatchEvent(new Event('submit'));
-            }
-        });
+if (leadForm) {
+  leadForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const submitButton = leadForm.querySelector('.submit-button');
+    const payload = Object.fromEntries(new FormData(leadForm).entries());
+
+    if (!payload.name || !payload.contact || !payload.projectType || !payload.description) {
+      formStatus.textContent = 'Заполните обязательные поля.';
+      formStatus.classList.add('error');
+      formStatus.classList.remove('success');
+      return;
     }
-    
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        
-        const submitBtn = this.querySelector('button[type="submit"]');
-        const originalText = submitBtn.textContent;
-        submitBtn.textContent = 'Отправка...';
-        submitBtn.disabled = true;
-        
-        try {
-            const name = this.querySelector('input[name="name"]').value;
-            const email = this.querySelector('input[name="email"]').value;
-            const message = this.querySelector('textarea[name="message"]').value;
-            const timestamp = new Date().toLocaleString('ru-RU');
-            
-            // Формируем текст сообщения
-            const telegramMessage = `<b>📝 Новая заявка с портфолио</b>
 
-<b>👤 Имя:</b> ${name}
-<b>📧 Email:</b> ${email}
-<b>💬 Сообщение:</b>
-${message}
+    submitButton.disabled = true;
+    submitButton.textContent = 'Отправка...';
+    formStatus.textContent = '';
+    formStatus.classList.remove('error', 'success');
 
-<b>⏰ Время:</b> ${timestamp}`;
-            
-            // Отправляем через Telegram Bot API
-            const botToken = '8464552761:AAEatg3iVHcWf9iMo5xX_f2v17Euj2-5Yd8';
-            const chatId = '763637481';
-            
-            const response = await fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: telegramMessage,
-                    parse_mode: 'HTML'
-                })
-            });
-            
-            const data = await response.json();
-            
-            if (data.ok) {
-                alert('✅ Спасибо! Заявка отправлена. Я свяжусь с вами в ближайшее время.');
-                this.reset();
-                submitBtn.textContent = 'Отправлено!';
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 2000);
-            } else {
-                throw new Error(data.description || 'Ошибка отправки');
-            }
-        } catch (error) {
-            console.error('Ошибка:', error);
-            alert('⚠️ Ошибка: ' + error.message + '\n\nНапишите на: max5289457@gmail.com');
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-        }
-    });
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Не удалось отправить заявку.');
+      }
+
+      formStatus.textContent = result.message;
+      formStatus.classList.add('success');
+      formStatus.classList.remove('error');
+      leadForm.reset();
+    } catch (error) {
+      formStatus.textContent = error.message;
+      formStatus.classList.add('error');
+      formStatus.classList.remove('success');
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'Отправить заявку';
+    }
+  });
 }
 
