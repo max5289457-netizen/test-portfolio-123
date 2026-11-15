@@ -22,6 +22,8 @@ let modalImages = [];
 let modalIndex = 0;
 let modalReturnFocus = null;
 let previousBodyOverflow = '';
+let navScrollFrame = 0;
+let previousScrollBehavior = null;
 
 if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
@@ -59,6 +61,56 @@ if (navToggle && mainNav) {
   });
 }
 
+const cancelNavScroll = () => {
+  if (navScrollFrame) cancelAnimationFrame(navScrollFrame);
+  navScrollFrame = 0;
+
+  if (previousScrollBehavior !== null) {
+    document.documentElement.style.scrollBehavior = previousScrollBehavior;
+    previousScrollBehavior = null;
+  }
+};
+
+const scrollToSection = (target) => {
+  cancelNavScroll();
+
+  const root = document.documentElement;
+  const startPosition = window.scrollY;
+  const scrollMargin = Number.parseFloat(getComputedStyle(target).scrollMarginTop) || 0;
+  const targetPosition = Math.max(
+    0,
+    startPosition + target.getBoundingClientRect().top - scrollMargin
+  );
+  const distance = targetPosition - startPosition;
+
+  if (Math.abs(distance) < 1) return;
+
+  previousScrollBehavior = root.style.scrollBehavior;
+  root.style.scrollBehavior = 'auto';
+
+  const duration = Math.min(1000, Math.max(450, Math.abs(distance) * 0.25));
+  let startTime = null;
+
+  const animateScroll = (time) => {
+    if (startTime === null) startTime = time;
+
+    const progress = Math.min((time - startTime) / duration, 1);
+    const easedProgress = 1 - Math.pow(1 - progress, 3);
+    window.scrollTo(0, startPosition + distance * easedProgress);
+
+    if (progress < 1) {
+      navScrollFrame = requestAnimationFrame(animateScroll);
+    } else {
+      cancelNavScroll();
+    }
+  };
+
+  navScrollFrame = requestAnimationFrame(animateScroll);
+};
+
+window.addEventListener('wheel', cancelNavScroll, { passive: true });
+window.addEventListener('touchstart', cancelNavScroll, { passive: true });
+
 navLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     const targetId = link.getAttribute('href');
@@ -66,7 +118,7 @@ navLinks.forEach((link) => {
 
     if (target) {
       event.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollToSection(target);
     }
 
     if (navToggle && mainNav) {
