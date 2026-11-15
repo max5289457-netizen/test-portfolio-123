@@ -1,6 +1,7 @@
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 const navLinks = document.querySelectorAll('.main-nav a');
+const sectionLinks = document.querySelectorAll('a[href^="#"]');
 const themeToggle = document.getElementById('themeToggle');
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
@@ -111,7 +112,7 @@ const scrollToSection = (target) => {
 window.addEventListener('wheel', cancelNavScroll, { passive: true });
 window.addEventListener('touchstart', cancelNavScroll, { passive: true });
 
-navLinks.forEach((link) => {
+sectionLinks.forEach((link) => {
   link.addEventListener('click', (event) => {
     const targetId = link.getAttribute('href');
     const target = targetId ? document.querySelector(targetId) : null;
@@ -121,7 +122,7 @@ navLinks.forEach((link) => {
       scrollToSection(target);
     }
 
-    if (navToggle && mainNav) {
+    if (navToggle && mainNav && mainNav.contains(link)) {
       mainNav.classList.remove('is-open');
       navToggle.classList.remove('is-open');
       navToggle.setAttribute('aria-expanded', 'false');
