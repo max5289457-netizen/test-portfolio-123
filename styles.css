@@ -293,9 +293,13 @@ section[id] {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
+  grid-template-columns: 1fr;
   align-items: center;
   gap: 44px;
+}
+
+.hero-copy {
+  max-width: 860px;
 }
 
 .hero-copy h1 {
@@ -340,50 +344,6 @@ section[id] {
   color: var(--text-soft);
   font-size: 0.82rem;
   font-weight: 600;
-}
-
-.hero-visual {
-  position: relative;
-  min-height: 560px;
-}
-
-.project-preview {
-  position: absolute;
-  overflow: hidden;
-  border: 1px solid rgba(23, 21, 19, 0.06);
-  border-radius: 24px;
-  background: var(--surface);
-  box-shadow: var(--shadow);
-}
-
-.project-preview img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.preview-one {
-  top: 80px;
-  right: 0;
-  width: 330px;
-  height: 430px;
-  transform: rotate(5deg);
-}
-
-.preview-two {
-  top: 20px;
-  left: 20px;
-  width: 270px;
-  height: 300px;
-  transform: rotate(-8deg);
-}
-
-.preview-three {
-  right: 80px;
-  bottom: 0;
-  width: 260px;
-  height: 190px;
-  transform: rotate(6deg);
 }
 
 .badge {
@@ -1175,20 +1135,6 @@ section[id] {
 
   .hero-actions .button {
     width: 100%;
-  }
-
-  .preview-one,
-  .preview-two,
-  .preview-three {
-    position: static;
-    width: 100%;
-    height: 220px;
-    transform: none;
-    margin-bottom: 18px;
-  }
-
-  .hero-visual {
-    min-height: auto;
   }
 
   .principles {
