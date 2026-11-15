@@ -1,6 +1,7 @@
 const navToggle = document.querySelector('.nav-toggle');
 const mainNav = document.querySelector('.main-nav');
 const navLinks = document.querySelectorAll('.main-nav a');
+const themeToggle = document.getElementById('themeToggle');
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
 const portfolioEmpty = document.getElementById('portfolioEmpty');
@@ -24,6 +25,21 @@ let previousBodyOverflow = '';
 
 if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
+}
+
+if (themeToggle) {
+  themeToggle.setAttribute('aria-checked', String(document.documentElement.dataset.theme === 'dark'));
+  themeToggle.addEventListener('click', () => {
+    const nextTheme = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
+    document.documentElement.dataset.theme = nextTheme;
+    themeToggle.setAttribute('aria-checked', String(nextTheme === 'dark'));
+
+    try {
+      localStorage.setItem('max-portfolio-theme', nextTheme);
+    } catch {
+      // The current page theme still changes when storage is unavailable.
+    }
+  });
 }
 
 if (navToggle && mainNav) {
@@ -85,11 +101,25 @@ filterButtons.forEach((button) => {
   });
 });
 
-const updateModalImage = () => {
+const updateModalImage = (direction = 0) => {
   if (!modalImages.length) return;
 
   modalImage.src = modalImages[modalIndex];
   modalImage.alt = `${modalTitle.textContent}, изображение ${modalIndex + 1}`;
+
+  if (
+    direction &&
+    typeof modalImage.animate === 'function' &&
+    !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  ) {
+    modalImage.animate(
+      [
+        { opacity: 0.55, transform: `translateX(${direction * 18}px)` },
+        { opacity: 1, transform: 'translateX(0)' }
+      ],
+      { duration: 200, easing: 'ease-out' }
+    );
+  }
 
   modalThumbnails?.querySelectorAll('button').forEach((button, index) => {
     button.setAttribute('aria-pressed', String(index === modalIndex));
@@ -122,8 +152,9 @@ const openProjectModal = (card) => {
     thumbnailImage.alt = '';
     thumbnailButton.append(thumbnailImage);
     thumbnailButton.addEventListener('click', () => {
+      const direction = Math.sign(index - modalIndex);
       modalIndex = index;
-      updateModalImage();
+      updateModalImage(direction);
     });
     modalThumbnails?.append(thumbnailButton);
   });
@@ -167,12 +198,12 @@ modalClose?.addEventListener('click', closeProjectModal);
 
 modalPrev?.addEventListener('click', () => {
   modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
-  updateModalImage();
+  updateModalImage(-1);
 });
 
 modalNext?.addEventListener('click', () => {
   modalIndex = (modalIndex + 1) % modalImages.length;
-  updateModalImage();
+  updateModalImage(1);
 });
 
 modal?.addEventListener('click', (event) => {
@@ -188,12 +219,12 @@ document.addEventListener('keydown', (event) => {
   }
   if (event.key === 'ArrowRight' && modalImages.length > 1) {
     modalIndex = (modalIndex + 1) % modalImages.length;
-    updateModalImage();
+    updateModalImage(1);
     return;
   }
   if (event.key === 'ArrowLeft' && modalImages.length > 1) {
     modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
-    updateModalImage();
+    updateModalImage(-1);
     return;
   }
   if (event.key !== 'Tab') return;

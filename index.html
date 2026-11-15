@@ -20,6 +20,15 @@
     <meta property="og:url" content="https://test-portfolio-123.vercel.app/" />
     <link rel="canonical" href="https://test-portfolio-123.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      try {
+        const savedTheme = localStorage.getItem('max-portfolio-theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+      } catch {
+        document.documentElement.dataset.theme = 'light';
+      }
+    </script>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script defer src="script.js"></script>
@@ -42,6 +51,11 @@
           <a href="#process">Как я работаю</a>
           <a href="#contact">Контакты</a>
         </nav>
+
+          <button class="theme-toggle" id="themeToggle" type="button" role="switch" aria-checked="false" aria-label="Тёмная тема">
+            <span class="theme-toggle-track" aria-hidden="true"><span></span></span>
+            <span class="theme-toggle-label">Тёмная тема</span>
+          </button>
 
         <a class="button button-primary nav-cta" href="#contact">Обсудить проект</a>
       </div>

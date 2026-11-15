@@ -1530,3 +1530,180 @@ button {
     padding: 16px;
   }
 }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 42px;
+  color: var(--text-soft);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.theme-toggle-track {
+  display: inline-flex;
+  width: 40px;
+  height: 24px;
+  align-items: center;
+  padding: 3px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  transition: background 0.2s ease;
+}
+
+.theme-toggle-track span {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--text-soft);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle-track {
+  background: var(--accent-soft);
+}
+
+.theme-toggle[aria-checked="true"] .theme-toggle-track span {
+  transform: translateX(16px);
+  background: var(--accent-strong);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent-strong);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Dark palette overrides hard-coded light surfaces while preserving the original layout. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #141815;
+  --bg-soft: #1b211c;
+  --surface: #1d241f;
+  --surface-strong: #242c26;
+  --text: #edf2eb;
+  --text-soft: #b6c0b6;
+  --line: rgba(235, 244, 235, 0.12);
+  --accent: #c9a47e;
+  --accent-strong: #e0bc94;
+  --accent-soft: rgba(201, 164, 126, 0.16);
+  --shadow: 0 18px 56px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .site-header {
+  background: rgba(20, 24, 21, 0.9);
+}
+
+:root[data-theme="dark"] .main-nav {
+  background: rgba(29, 36, 31, 0.97);
+}
+
+:root[data-theme="dark"] .nav-toggle {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+:root[data-theme="dark"] .filter-button.active,
+:root[data-theme="dark"] .filter-button:hover {
+  background: var(--accent-strong);
+  border-color: var(--accent-strong);
+  color: #172019;
+}
+
+:root[data-theme="dark"] .hero {
+  background:
+    radial-gradient(circle at top right, rgba(201, 164, 126, 0.12), transparent 25%),
+    linear-gradient(135deg, #1d241f 0%, #141815 100%);
+}
+
+:root[data-theme="dark"] .hero-list li {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:root[data-theme="dark"] .project-preview {
+  border-color: var(--line);
+}
+
+:root[data-theme="dark"] .badge {
+  background: rgba(20, 24, 21, 0.84);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .services {
+  background: linear-gradient(180deg, #1b211d 0%, var(--bg) 100%);
+}
+
+:root[data-theme="dark"] .service-card,
+:root[data-theme="dark"] .advantage-item {
+  background: rgba(255, 255, 255, 0.035);
+}
+
+:root[data-theme="dark"] .accent-card {
+  background: linear-gradient(180deg, rgba(201, 164, 126, 0.13), rgba(255, 255, 255, 0.035));
+}
+
+:root[data-theme="dark"] .process-step {
+  background: var(--surface-strong);
+}
+
+:root[data-theme="dark"] .advantages {
+  background: linear-gradient(180deg, var(--bg) 0%, #1a201b 100%);
+}
+
+:root[data-theme="dark"] .contact {
+  background: linear-gradient(135deg, rgba(201, 164, 126, 0.08), var(--bg));
+}
+
+:root[data-theme="dark"] .lead-form {
+  background: rgba(29, 36, 31, 0.94);
+}
+
+:root[data-theme="dark"] .lead-form input,
+:root[data-theme="dark"] .lead-form select,
+:root[data-theme="dark"] .lead-form textarea {
+  background: rgba(10, 13, 11, 0.45);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .lead-form input::placeholder,
+:root[data-theme="dark"] .lead-form textarea::placeholder {
+  color: #929d92;
+}
+
+:root[data-theme="dark"] .button-primary {
+  background: #e2e9df;
+  color: #172019;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28);
+}
+
+:root[data-theme="dark"] .button-primary:hover {
+  background: #cdd9ca;
+}
+
+:root[data-theme="dark"] .site-footer {
+  background: #0c100d;
+}
+
+:root[data-theme="dark"] .modal-dialog {
+  background: var(--surface);
+}
+
+:root[data-theme="dark"] .modal-visual {
+  background: #111512;
+}
+
+:root[data-theme="dark"] .modal-close,
+:root[data-theme="dark"] .modal-nav {
+  background: rgba(29, 36, 31, 0.94);
+  color: var(--text);
+}
+
+:root[data-theme="dark"] .form-status.error {
+  color: #ffaaaa;
+}
+
+:root[data-theme="dark"] .form-status.success {
+  color: #9cddb2;
+}
