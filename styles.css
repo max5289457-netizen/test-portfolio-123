@@ -486,6 +486,10 @@ section[id] {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, var(--bg) 100%);
 }
 
+:root[data-theme='dark'] .services {
+  background: linear-gradient(180deg, #111923 0%, var(--bg) 100%);
+}
+
 .services-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -503,8 +507,19 @@ section[id] {
   box-shadow: 0 12px 24px rgba(17, 14, 12, 0.04);
 }
 
+:root[data-theme='dark'] .service-card {
+  background: linear-gradient(145deg, #19232d, #141c25);
+  border-color: rgba(196, 206, 216, 0.16);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+}
+
 .accent-card {
   background: linear-gradient(180deg, rgba(185, 120, 76, 0.12), rgba(255, 255, 255, 0.8));
+}
+
+:root[data-theme='dark'] .service-card.accent-card {
+  background: linear-gradient(145deg, rgba(241, 185, 111, 0.2), #18232d 72%);
+  border-color: rgba(241, 185, 111, 0.32);
 }
 
 .service-icon {
@@ -518,6 +533,11 @@ section[id] {
   color: var(--surface);
   font-size: 0.85rem;
   font-weight: 800;
+}
+
+:root[data-theme='dark'] .service-icon {
+  background: var(--accent);
+  color: #141a20;
 }
 
 .service-card h3 {
