@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://portfolio-khaki-psi-exn0iua8f5.vercel.app/sitemap.xml
+Sitemap: https://test-portfolio-123.vercel.app/sitemap.xml

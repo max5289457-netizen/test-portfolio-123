@@ -65,6 +65,15 @@ function readRequestBody(req) {
   });
 }
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>\"]/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;'
+  })[character]);
+}
+
 async function sendTelegramMessage(payload) {
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
   const telegramChatId = process.env.TELEGRAM_CHAT_ID;
@@ -78,13 +87,13 @@ async function sendTelegramMessage(payload) {
   const message = [
     '<b>📝 Новая заявка с сайта</b>',
     '',
-    `<b>Имя:</b> ${String(payload.name || '').trim()}`,
-    `<b>Контакт:</b> ${String(payload.contact || '').trim()}`,
-    `<b>Тип проекта:</b> ${String(payload.projectType || '').trim()}`,
-    `<b>Бюджет:</b> ${String(payload.budget || 'Не указан').trim()}`,
+    `<b>Имя:</b> ${escapeHtml(String(payload.name || '').trim())}`,
+    `<b>Контакт:</b> ${escapeHtml(String(payload.contact || '').trim())}`,
+    `<b>Тип проекта:</b> ${escapeHtml(String(payload.projectType || '').trim())}`,
+    `<b>Бюджет:</b> ${escapeHtml(String(payload.budget || 'Не указан').trim())}`,
     '',
     '<b>Описание задачи:</b>',
-    String(payload.description || '').trim()
+    escapeHtml(String(payload.description || '').trim())
   ].join('\n');
 
   const response = await fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {

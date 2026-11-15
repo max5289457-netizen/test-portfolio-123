@@ -12,6 +12,15 @@ export default async function handler(req, res) {
     });
   }
 
+    function escapeHtml(value) {
+      return String(value).replace(/[&<>\"]/g, (character) => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;'
+      })[character]);
+    }
+
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
   const telegramChatId = process.env.TELEGRAM_CHAT_ID;
 
@@ -25,13 +34,13 @@ export default async function handler(req, res) {
   const message = [
     '<b>📝 Новая заявка с сайта</b>',
     '',
-    `<b>Имя:</b> ${String(name).trim()}`,
-    `<b>Контакт:</b> ${String(contact).trim()}`,
-    `<b>Тип проекта:</b> ${String(projectType).trim()}`,
-    `<b>Бюджет:</b> ${String(budget || 'Не указан').trim()}`,
+    `<b>Имя:</b> ${escapeHtml(String(name).trim())}`,
+    `<b>Контакт:</b> ${escapeHtml(String(contact).trim())}`,
+    `<b>Тип проекта:</b> ${escapeHtml(String(projectType).trim())}`,
+    `<b>Бюджет:</b> ${escapeHtml(String(budget || 'Не указан').trim())}`,
     '',
     '<b>Описание задачи:</b>',
-    String(description).trim()
+    escapeHtml(String(description).trim())
   ].join('\n');
 
   try {

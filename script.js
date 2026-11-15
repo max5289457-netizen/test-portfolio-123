@@ -3,6 +3,7 @@ const mainNav = document.querySelector('.main-nav');
 const navLinks = document.querySelectorAll('.main-nav a');
 const filterButtons = document.querySelectorAll('.filter-button');
 const projectCards = document.querySelectorAll('.project-card');
+const portfolioEmpty = document.getElementById('portfolioEmpty');
 const currentYear = document.getElementById('currentYear');
 const leadForm = document.getElementById('leadForm');
 const formStatus = document.getElementById('formStatus');
@@ -11,12 +12,15 @@ const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalCategory = document.getElementById('modalCategory');
 const modalDescription = document.getElementById('modalDescription');
+const modalThumbnails = document.getElementById('modalThumbnails');
 const modalClose = document.querySelector('.modal-close');
 const modalPrev = document.querySelector('.modal-prev');
 const modalNext = document.querySelector('.modal-next');
 
 let modalImages = [];
 let modalIndex = 0;
+let modalReturnFocus = null;
+let previousBodyOverflow = '';
 
 if (currentYear) {
   currentYear.textContent = new Date().getFullYear();
@@ -59,93 +63,151 @@ const observer = new IntersectionObserver(
 
 sections.forEach((section) => observer.observe(section));
 
+// Keep category keys aligned with data-category and announce empty filters without leaving a blank grid.
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
+    let visibleCount = 0;
 
-    filterButtons.forEach((item) => item.classList.toggle('active', item === button));
+    filterButtons.forEach((item) => {
+      const isActive = item === button;
+      item.classList.toggle('active', isActive);
+      item.setAttribute('aria-pressed', String(isActive));
+    });
 
     projectCards.forEach((card) => {
       const matches = filter === 'all' || card.dataset.category === filter;
       card.classList.toggle('is-hidden', !matches);
+      if (matches) visibleCount += 1;
     });
+
+    if (portfolioEmpty) portfolioEmpty.hidden = visibleCount > 0;
   });
 });
-
-const openProjectModal = (card) => {
-  const images = card.dataset.images ? card.dataset.images.split('|') : [card.querySelector('img').src];
-  modalImages = images.filter(Boolean);
-  modalIndex = 0;
-  modalTitle.textContent = card.dataset.title || 'Название проекта';
-  modalCategory.textContent = card.dataset.category || 'Проект';
-  modalDescription.textContent = card.dataset.description || 'Описание проекта';
-  updateModalImage();
-  modal.classList.add('is-open');
-  modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
-};
-
-const closeProjectModal = () => {
-  modal.classList.remove('is-open');
-  modal.setAttribute('aria-hidden', 'true');
-  document.body.style.overflow = '';
-};
 
 const updateModalImage = () => {
   if (!modalImages.length) return;
-  const imagePath = modalImages[modalIndex];
-  modalImage.src = imagePath;
-  modalImage.alt = modalTitle.textContent;
+
+  modalImage.src = modalImages[modalIndex];
+  modalImage.alt = `${modalTitle.textContent}, изображение ${modalIndex + 1}`;
+
+  modalThumbnails?.querySelectorAll('button').forEach((button, index) => {
+    button.setAttribute('aria-pressed', String(index === modalIndex));
+  });
 };
 
-projectCards.forEach((card) => {
-  const image = card.querySelector('img');
-  if (image) {
-    image.addEventListener('click', () => openProjectModal(card));
-  }
+const openProjectModal = (card) => {
+  if (!modal || !modalImage || !modalTitle || !modalCategory || !modalDescription) return;
 
-  card.addEventListener('click', (event) => {
-    if (event.target === card || event.target.closest('.project-body')) {
-      openProjectModal(card);
-    }
+  const cardImage = card.querySelector('.project-thumb img');
+  modalImages = (card.dataset.images || cardImage?.getAttribute('src') || '').split('|').filter(Boolean);
+  if (!modalImages.length) return;
+
+  modalReturnFocus = card;
+  previousBodyOverflow = document.body.style.overflow;
+  modalIndex = 0;
+  modalTitle.textContent = card.dataset.title || 'Название проекта';
+  modalCategory.textContent = card.querySelector('.project-tag')?.textContent || 'Проект';
+  modalDescription.textContent = card.dataset.description || 'Описание проекта';
+  modalThumbnails?.replaceChildren();
+
+  modalImages.forEach((imagePath, index) => {
+    const thumbnailButton = document.createElement('button');
+    const thumbnailImage = document.createElement('img');
+    thumbnailButton.type = 'button';
+    thumbnailButton.className = 'modal-thumbnail';
+    thumbnailButton.setAttribute('aria-label', `Показать изображение ${index + 1}`);
+    thumbnailButton.setAttribute('aria-pressed', String(index === 0));
+    thumbnailImage.src = imagePath;
+    thumbnailImage.alt = '';
+    thumbnailButton.append(thumbnailImage);
+    thumbnailButton.addEventListener('click', () => {
+      modalIndex = index;
+      updateModalImage();
+    });
+    modalThumbnails?.append(thumbnailButton);
+  });
+
+  const hasGallery = modalImages.length > 1;
+  if (modalPrev) modalPrev.hidden = !hasGallery;
+  if (modalNext) modalNext.hidden = !hasGallery;
+  if (modalThumbnails) modalThumbnails.hidden = !hasGallery;
+
+  updateModalImage();
+  projectCards.forEach((projectCard) => projectCard.setAttribute('aria-expanded', String(projectCard === card)));
+  modal.classList.add('is-open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => modalClose?.focus({ preventScroll: true }), 0);
+};
+
+const closeProjectModal = () => {
+  if (!modal?.classList.contains('is-open')) return;
+
+  modal.classList.remove('is-open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = previousBodyOverflow;
+  const focusTarget = modalReturnFocus;
+  modalReturnFocus = null;
+  focusTarget?.setAttribute('aria-expanded', 'false');
+  focusTarget?.focus({ preventScroll: true });
+};
+
+// Cards use custom button semantics, so mouse/keyboard activation and dialog focus return are explicit.
+projectCards.forEach((card) => {
+  card.addEventListener('click', () => openProjectModal(card));
+  card.addEventListener('keydown', (event) => {
+    if (event.key !== 'Enter' && event.key !== ' ') return;
+    event.preventDefault();
+    if (!event.repeat) openProjectModal(card);
   });
 });
 
-if (modalClose) {
-  modalClose.addEventListener('click', closeProjectModal);
-}
+modalClose?.addEventListener('click', closeProjectModal);
 
-if (modalPrev) {
-  modalPrev.addEventListener('click', () => {
-    modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
-    updateModalImage();
-  });
-}
+modalPrev?.addEventListener('click', () => {
+  modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+  updateModalImage();
+});
 
-if (modalNext) {
-  modalNext.addEventListener('click', () => {
-    modalIndex = (modalIndex + 1) % modalImages.length;
-    updateModalImage();
-  });
-}
+modalNext?.addEventListener('click', () => {
+  modalIndex = (modalIndex + 1) % modalImages.length;
+  updateModalImage();
+});
 
-if (modal) {
-  modal.addEventListener('click', (event) => {
-    if (event.target === modal) closeProjectModal();
-  });
-}
+modal?.addEventListener('click', (event) => {
+  if (event.target === modal) closeProjectModal();
+});
 
 document.addEventListener('keydown', (event) => {
-  if (!modal.classList.contains('is-open')) return;
+  if (!modal?.classList.contains('is-open')) return;
 
-  if (event.key === 'Escape') closeProjectModal();
-  if (event.key === 'ArrowRight') {
+  if (event.key === 'Escape') {
+    closeProjectModal();
+    return;
+  }
+  if (event.key === 'ArrowRight' && modalImages.length > 1) {
     modalIndex = (modalIndex + 1) % modalImages.length;
     updateModalImage();
+    return;
   }
-  if (event.key === 'ArrowLeft') {
+  if (event.key === 'ArrowLeft' && modalImages.length > 1) {
     modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
     updateModalImage();
+    return;
+  }
+  if (event.key !== 'Tab') return;
+
+  const focusable = [...modal.querySelectorAll('button:not([disabled]):not([hidden])')]
+    .filter((element) => element.getClientRects().length > 0);
+  const first = focusable[0];
+  const last = focusable[focusable.length - 1];
+  if (event.shiftKey && document.activeElement === first) {
+    event.preventDefault();
+    last.focus();
+  } else if (!event.shiftKey && document.activeElement === last) {
+    event.preventDefault();
+    first.focus();
   }
 });
 

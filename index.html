@@ -17,7 +17,8 @@
       content="Создаю сайты и визуальные решения для бизнеса — от концепции и дизайна до адаптивной разработки."
     />
     <meta property="og:image" content="images/2_683.jpg" />
-    <meta property="og:url" content="https://example.com/" />
+    <meta property="og:url" content="https://test-portfolio-123.vercel.app/" />
+    <link rel="canonical" href="https://test-portfolio-123.vercel.app/" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
@@ -279,16 +280,21 @@
           </div>
 
           <div class="portfolio-filters" aria-label="Фильтр работ">
-            <button class="filter-button active" data-filter="all" type="button">Все работы</button>
-            <button class="filter-button" data-filter="web-design" type="button">Веб-дизайн</button>
-            <button class="filter-button" data-filter="graphic-design" type="button">Графический дизайн</button>
-            <button class="filter-button" data-filter="marketplace" type="button">Карточки товаров</button>
-            <button class="filter-button" data-filter="branding" type="button">Брендинг</button>
+            <button class="filter-button active" data-filter="all" type="button" aria-pressed="true">Все работы</button>
+            <button class="filter-button" data-filter="web-design" type="button" aria-pressed="false">Веб-дизайн</button>
+            <button class="filter-button" data-filter="graphic-design" type="button" aria-pressed="false">Графический дизайн</button>
+            <button class="filter-button" data-filter="marketplace" type="button" aria-pressed="false">Карточки товаров</button>
+            <button class="filter-button" data-filter="branding" type="button" aria-pressed="false">Брендинг</button>
           </div>
 
-          <div class="portfolio-grid">
+          <div class="portfolio-grid" id="portfolioGrid">
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
+              aria-expanded="false"
               data-title="AWAKE — кофейня"
               data-category="branding"
               data-description="Кампейн для кофейни с визуальным стилем, гармоничной типографикой и контентом для социальных сетей."
@@ -306,6 +312,10 @@
 
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
               data-title="ART BAZAR"
               data-category="graphic-design"
               data-description="Серия рекламных материалов и буклетов для культурного события и арт-мероприятия."
@@ -323,6 +333,10 @@
 
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
               data-title="COFIX"
               data-category="branding"
               data-description="Дизайн материалов для кофейной сети в современном минималистичном стиле."
@@ -340,6 +354,10 @@
 
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
               data-title="Карточки товаров"
               data-category="marketplace"
               data-description="Минималистичные карточки товаров для маркетплейсов с акцентом на читаемость и продающий визуал."
@@ -357,6 +375,10 @@
 
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
               data-title="Социальные публикации"
               data-category="graphic-design"
               data-description="Подборка визуальных публикаций и рекламных элементов для брендовых акций."
@@ -374,6 +396,10 @@
 
             <article
               class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
               data-title="Разворотный буклет"
               data-category="graphic-design"
               data-description="Буклет для кофейного бренда с акцентом на продукт, атмосферу и позиционирование."
@@ -389,6 +415,7 @@
               </div>
             </article>
           </div>
+          <p class="portfolio-empty" id="portfolioEmpty" role="status" hidden>В этой категории пока нет опубликованных работ.</p>
         </div>
       </section>
 
@@ -405,7 +432,6 @@
               <a href="mailto:max5289457@gmail.com">max5289457@gmail.com</a>
               <a href="tel:+996553705707">+996 553 705 707</a>
               <a href="https://t.me/vodmaks" target="_blank" rel="noreferrer">Telegram</a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
             </div>
           </div>
 
@@ -476,13 +502,12 @@
         <div class="footer-contacts">
           <a href="mailto:max5289457@gmail.com">max5289457@gmail.com</a>
           <a href="https://t.me/vodmaks" target="_blank" rel="noreferrer">Telegram</a>
-          <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">Instagram</a>
         </div>
       </div>
       <div class="container copyright">© <span id="currentYear"></span> MAX</div>
     </footer>
 
-    <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal" id="projectModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-describedby="modalDescription">
       <div class="modal-dialog">
         <button class="modal-close" type="button" aria-label="Закрыть">×</button>
         <div class="modal-visual">
@@ -491,6 +516,7 @@
           <button class="modal-nav modal-next" type="button" aria-label="Следующий проект">›</button>
         </div>
         <div class="modal-copy">
+          <div class="modal-thumbnails" id="modalThumbnails" aria-label="Изображения проекта"></div>
           <span class="project-tag" id="modalCategory">Графический дизайн</span>
           <h3 id="modalTitle">Название проекта</h3>
           <p id="modalDescription">Описание проекта</p>

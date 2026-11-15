@@ -24,8 +24,9 @@
 ## Как использовать
 
 ### 1. Быстрый старт
-- Просто откройте файл `index.html` в браузере
-- Сайт полностью функционален без сервера
+- Установите Node.js и выполните `npm start` в папке проекта
+- Откройте `http://localhost:3000`
+- Для отправки заявок задайте `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в локальном `.env`
 
 ### 2. Кастомизация контента
 
@@ -73,19 +74,9 @@
 
 ### 4. Отправка форм
 
-Текущая форма показывает алерт. Для реальной отправки email:
+Форма отправляет JSON-заявку через `POST /api/contact` в `api/contact.js`. Для Vercel задайте `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID` в **Project Settings → Environment Variables**, затем выполните повторный deployment.
 
-**Вариант 1: Через FormSubmit (бесплатный сервис)**
-1. Откройте https://formspree.io/
-2. Создайте форму и получите ID
-3. Обновите action в форме:
-
-```html
-<form action="https://formspree.io/f/ВАШ_ID" method="POST">
-```
-
-**Вариант 2: Через Telegram бот**
-Используйте TelegramBot API для отправки форм в Telegram.
+Не добавляйте локальный `.env` в Git. Используйте `.env.example` как шаблон без реальных секретов.
 
 ## Заливка на хостинг
 
