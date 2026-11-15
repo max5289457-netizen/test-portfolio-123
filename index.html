@@ -30,8 +30,8 @@
       }
     </script>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=portfolio-hero-v1" />
-    <script defer src="script.js?v=nav-anchors-v1"></script>
+    <link rel="stylesheet" href="styles.css?v=category-scroll-v1" />
+    <script defer src="script.js?v=category-scroll-v1"></script>
   </head>
   <body>
     <header class="site-header">
@@ -284,12 +284,20 @@
             <h2>Работы, которые отражают стиль, подход и качество решений.</h2>
           </div>
 
-          <div class="portfolio-filters" aria-label="Фильтр работ">
-            <button class="filter-button active" data-filter="all" type="button" aria-pressed="true">Все работы</button>
-            <button class="filter-button" data-filter="web-design" type="button" aria-pressed="false">Веб-дизайн</button>
-            <button class="filter-button" data-filter="graphic-design" type="button" aria-pressed="false">Графический дизайн</button>
-            <button class="filter-button" data-filter="marketplace" type="button" aria-pressed="false">Карточки товаров</button>
-            <button class="filter-button" data-filter="branding" type="button" aria-pressed="false">Брендинг</button>
+          <div class="portfolio-filter-controls" role="group" aria-label="Переключение категорий портфолио">
+            <button class="category-step-button" data-direction="-1" type="button" aria-label="Предыдущая категория">
+              <span aria-hidden="true">←</span>
+            </button>
+            <div class="portfolio-filters" role="group" aria-label="Фильтр работ">
+              <button class="filter-button active" data-filter="all" type="button" aria-pressed="true">Все работы</button>
+              <button class="filter-button" data-filter="web-design" type="button" aria-pressed="false">Веб-дизайн</button>
+              <button class="filter-button" data-filter="graphic-design" type="button" aria-pressed="false">Графический дизайн</button>
+              <button class="filter-button" data-filter="marketplace" type="button" aria-pressed="false">Карточки товаров</button>
+              <button class="filter-button" data-filter="branding" type="button" aria-pressed="false">Брендинг</button>
+            </div>
+            <button class="category-step-button" data-direction="1" type="button" aria-label="Следующая категория">
+              <span aria-hidden="true">→</span>
+            </button>
           </div>
 
           <div class="portfolio-grid" id="portfolioGrid">

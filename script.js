@@ -4,6 +4,8 @@ const navLinks = document.querySelectorAll('.main-nav a');
 const sectionLinks = document.querySelectorAll('a[href^="#"]');
 const themeToggle = document.getElementById('themeToggle');
 const filterButtons = document.querySelectorAll('.filter-button');
+const portfolioFilterControls = document.querySelector('.portfolio-filter-controls');
+const categoryStepButtons = document.querySelectorAll('.category-step-button');
 const projectCards = document.querySelectorAll('.project-card');
 const portfolioEmpty = document.getElementById('portfolioEmpty');
 const currentYear = document.getElementById('currentYear');
@@ -152,6 +154,29 @@ const observer = new IntersectionObserver(
 sections.forEach((section) => observer.observe(section));
 
 // Keep category keys aligned with data-category and announce empty filters without leaving a blank grid.
+const stepThroughCategories = (direction) => {
+  if (!filterButtons.length) return;
+
+  const activeIndex = Array.from(filterButtons).findIndex((button) => button.classList.contains('active'));
+  const nextIndex = (activeIndex + direction + filterButtons.length) % filterButtons.length;
+  const nextButton = filterButtons[nextIndex];
+
+  nextButton.click();
+  nextButton.focus({ preventScroll: true });
+};
+
+categoryStepButtons.forEach((button) => {
+  button.addEventListener('click', () => stepThroughCategories(Number(button.dataset.direction)));
+});
+
+portfolioFilterControls?.addEventListener('keydown', (event) => {
+  if (event.altKey || event.ctrlKey || event.metaKey) return;
+  if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+
+  event.preventDefault();
+  stepThroughCategories(event.key === 'ArrowRight' ? 1 : -1);
+});
+
 filterButtons.forEach((button) => {
   button.addEventListener('click', () => {
     const filter = button.dataset.filter;
