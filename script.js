@@ -21,7 +21,7 @@ const modalClose = document.querySelector('.modal-close');
 const modalPrev = document.querySelector('.modal-prev');
 const modalNext = document.querySelector('.modal-next');
 
-let modalImages = [];
+let modalItems = [];
 let modalIndex = 0;
 let modalReturnFocus = null;
 let previousBodyOverflow = '';
@@ -199,10 +199,14 @@ filterButtons.forEach((button) => {
 });
 
 const updateModalImage = (direction = 0) => {
-  if (!modalImages.length) return;
+  if (!modalItems.length) return;
 
-  modalImage.src = modalImages[modalIndex];
-  modalImage.alt = `${modalTitle.textContent}, изображение ${modalIndex + 1}`;
+  const item = modalItems[modalIndex];
+  modalImage.src = item.src;
+  modalTitle.textContent = item.title;
+  modalCategory.textContent = item.category;
+  modalDescription.textContent = item.description;
+  modalImage.alt = `${item.title}, изображение ${modalIndex + 1} из ${modalItems.length}`;
 
   if (
     direction &&
@@ -226,26 +230,36 @@ const updateModalImage = (direction = 0) => {
 const openProjectModal = (card) => {
   if (!modal || !modalImage || !modalTitle || !modalCategory || !modalDescription) return;
 
-  const cardImage = card.querySelector('.project-thumb img');
-  modalImages = (card.dataset.images || cardImage?.getAttribute('src') || '').split('|').filter(Boolean);
-  if (!modalImages.length) return;
+  const cards = card.dataset.category === 'marketplace'
+    ? Array.from(projectCards).filter((projectCard) => projectCard.dataset.category === 'marketplace')
+    : [card];
+
+  modalItems = cards.flatMap((projectCard) => {
+    const cardImage = projectCard.querySelector('.project-thumb img');
+    const imagePaths = (projectCard.dataset.images || cardImage?.getAttribute('src') || '').split('|').filter(Boolean);
+    const item = {
+      title: projectCard.dataset.title || 'Название проекта',
+      category: projectCard.querySelector('.project-tag')?.textContent || 'Проект',
+      description: projectCard.dataset.description || 'Описание проекта'
+    };
+
+    return imagePaths.map((src) => ({ ...item, src }));
+  });
+  if (!modalItems.length) return;
 
   modalReturnFocus = card;
   previousBodyOverflow = document.body.style.overflow;
   modalIndex = 0;
-  modalTitle.textContent = card.dataset.title || 'Название проекта';
-  modalCategory.textContent = card.querySelector('.project-tag')?.textContent || 'Проект';
-  modalDescription.textContent = card.dataset.description || 'Описание проекта';
   modalThumbnails?.replaceChildren();
 
-  modalImages.forEach((imagePath, index) => {
+  modalItems.forEach((item, index) => {
     const thumbnailButton = document.createElement('button');
     const thumbnailImage = document.createElement('img');
     thumbnailButton.type = 'button';
     thumbnailButton.className = 'modal-thumbnail';
-    thumbnailButton.setAttribute('aria-label', `Показать изображение ${index + 1}`);
+    thumbnailButton.setAttribute('aria-label', `Показать изображение ${index + 1}: ${item.title}`);
     thumbnailButton.setAttribute('aria-pressed', String(index === 0));
-    thumbnailImage.src = imagePath;
+    thumbnailImage.src = item.src;
     thumbnailImage.alt = '';
     thumbnailButton.append(thumbnailImage);
     thumbnailButton.addEventListener('click', () => {
@@ -256,7 +270,7 @@ const openProjectModal = (card) => {
     modalThumbnails?.append(thumbnailButton);
   });
 
-  const hasGallery = modalImages.length > 1;
+  const hasGallery = modalItems.length > 1;
   if (modalPrev) modalPrev.hidden = !hasGallery;
   if (modalNext) modalNext.hidden = !hasGallery;
   if (modalThumbnails) modalThumbnails.hidden = !hasGallery;
@@ -294,12 +308,12 @@ projectCards.forEach((card) => {
 modalClose?.addEventListener('click', closeProjectModal);
 
 modalPrev?.addEventListener('click', () => {
-  modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+  modalIndex = (modalIndex - 1 + modalItems.length) % modalItems.length;
   updateModalImage(-1);
 });
 
 modalNext?.addEventListener('click', () => {
-  modalIndex = (modalIndex + 1) % modalImages.length;
+  modalIndex = (modalIndex + 1) % modalItems.length;
   updateModalImage(1);
 });
 
@@ -314,13 +328,13 @@ document.addEventListener('keydown', (event) => {
     closeProjectModal();
     return;
   }
-  if (event.key === 'ArrowRight' && modalImages.length > 1) {
-    modalIndex = (modalIndex + 1) % modalImages.length;
+  if (event.key === 'ArrowRight' && modalItems.length > 1) {
+    modalIndex = (modalIndex + 1) % modalItems.length;
     updateModalImage(1);
     return;
   }
-  if (event.key === 'ArrowLeft' && modalImages.length > 1) {
-    modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+  if (event.key === 'ArrowLeft' && modalItems.length > 1) {
+    modalIndex = (modalIndex - 1 + modalItems.length) % modalItems.length;
     updateModalImage(-1);
     return;
   }
