@@ -30,7 +30,7 @@
       }
     </script>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=portfolio-collections-v1" />
+    <link rel="stylesheet" href="styles.css?v=portfolio-cards-v2" />
     <script defer src="script.js?v=portfolio-collections-v1"></script>
   </head>
   <body>
@@ -325,7 +325,7 @@
             </article>
 
             <article
-              class="project-card"
+              class="project-card collection-card"
               role="button"
               tabindex="0"
               aria-haspopup="dialog"
@@ -337,17 +337,35 @@
               data-description="Подборка проектов по брендингу: айдентика, визуальные системы и материалы для брендов."
             >
               <div class="project-thumb">
-                <img src="images/branding-cover.svg" alt="Обложка подборки проектов по брендингу" />
+                <div class="project-cover project-cover--branding" aria-hidden="true">
+                  <div class="cover-topline"><span>MAX STUDIO / 01</span><span class="cover-index">01</span></div>
+                  <div class="cover-scene cover-scene--branding">
+                    <div class="brand-card brand-card--back">
+                      <span class="brand-mini">COFFEE HOUSE</span>
+                      <span class="brand-seal">C</span>
+                      <strong>COFIX</strong>
+                      <span class="brand-caption">ROASTED WITH CARE</span>
+                    </div>
+                    <div class="brand-card brand-card--front">
+                      <span class="brand-mini">INDEPENDENT ROASTERS</span>
+                      <span class="brand-mark"></span>
+                      <strong>AWAKE</strong>
+                      <span class="brand-caption">GOOD DAYS START HERE</span>
+                    </div>
+                  </div>
+                  <div class="cover-bottomline"><span>IDENTITY SYSTEM</span><span>BRANDS / 2026</span></div>
+                </div>
               </div>
               <div class="project-body">
                 <span class="project-tag">Брендинг</span>
                 <h3>Брендинг</h3>
                 <p>Айдентика, визуальные системы и материалы для брендов.</p>
+                <div class="collection-action"><span>8 работ в подборке</span><span aria-hidden="true">↗</span></div>
               </div>
             </article>
 
             <article
-              class="project-card"
+              class="project-card collection-card"
               role="button"
               tabindex="0"
               aria-haspopup="dialog"
@@ -359,17 +377,33 @@
               data-description="Подборка графических проектов: постеры, публикации, буклеты и рекламные материалы."
             >
               <div class="project-thumb">
-                <img src="images/graphic-design-cover.svg" alt="Обложка подборки проектов по графическому дизайну" />
+                <div class="project-cover project-cover--graphic" aria-hidden="true">
+                  <div class="cover-topline"><span>PRINT / DIGITAL / 02</span><span class="cover-index">02</span></div>
+                  <div class="cover-scene cover-scene--graphic">
+                    <div class="graphic-poster graphic-poster--back">
+                      <span class="poster-label">POSTER SERIES</span>
+                      <strong>TYPE<br />MATTERS</strong>
+                      <span class="poster-orbit"></span>
+                    </div>
+                    <div class="graphic-poster graphic-poster--front">
+                      <span class="poster-label">CITY · CULTURE</span>
+                      <strong>ART<br />BAZAR</strong>
+                      <span class="poster-stamp">A</span>
+                    </div>
+                  </div>
+                  <div class="cover-bottomline"><span>POSTERS & EDITORIAL</span><span>SELECTED</span></div>
+                </div>
               </div>
               <div class="project-body">
                 <span class="project-tag">Графический дизайн</span>
                 <h3>Графический дизайн</h3>
                 <p>Постеры, публикации, буклеты и рекламные материалы.</p>
+                <div class="collection-action"><span>7 работ в подборке</span><span aria-hidden="true">↗</span></div>
               </div>
             </article>
 
             <article
-              class="project-card"
+              class="project-card collection-card"
               role="button"
               tabindex="0"
               aria-haspopup="dialog"
@@ -381,17 +415,39 @@
               data-description="Подборка карточек товаров с инфографикой, преимуществами и визуальной подачей."
             >
               <div class="project-thumb">
-                <img src="images/product-cards-cover.svg" alt="Обложка подборки карточек товаров" />
+                <div class="project-cover project-cover--products" aria-hidden="true">
+                  <div class="cover-topline"><span>MARKETPLACE / 03</span><span class="cover-index">03</span></div>
+                  <div class="cover-scene cover-scene--products">
+                    <div class="product-tile product-tile--audio">
+                      <span class="product-label">01 / AUDIO</span>
+                      <span class="product-earbud product-earbud--left"></span>
+                      <span class="product-earbud product-earbud--right"></span>
+                      <span class="product-tile-line"></span>
+                    </div>
+                    <div class="product-tile product-tile--home">
+                      <span class="product-label">02 / HOME</span>
+                      <span class="product-box"></span>
+                      <span class="product-tile-line"></span>
+                    </div>
+                    <div class="product-tile product-tile--style">
+                      <span class="product-label">03 / STYLE</span>
+                      <span class="product-bag"></span>
+                      <span class="product-tile-line"></span>
+                    </div>
+                  </div>
+                  <div class="cover-bottomline"><span>PRODUCT · BENEFIT</span><span>STORY</span></div>
+                </div>
               </div>
               <div class="project-body">
                 <span class="project-tag">Карточки товаров</span>
                 <h3>Карточки товаров</h3>
                 <p>Инфографика и визуальная подача товаров для маркетплейсов.</p>
+                <div class="collection-action"><span>9 карточек в подборке</span><span aria-hidden="true">↗</span></div>
               </div>
             </article>
 
             <article
-              class="project-card"
+              class="project-card project-card--weather"
               role="button"
               tabindex="0"
               aria-haspopup="dialog"
@@ -404,12 +460,29 @@
               data-link="https://weather-site-ten-beryl.vercel.app/"
             >
               <div class="project-thumb">
-                <img src="images/weather-pulse-cover.svg" alt="Обложка Weather Pulse — погодный сервис с прогнозом для Москвы" />
+                <div class="project-cover project-cover--weather" aria-hidden="true">
+                  <div class="weather-cover-top"><span>WEATHER PULSE</span><span>LIVE / 09:41</span></div>
+                  <div class="weather-cover-main">
+                    <div class="weather-cover-reading">
+                      <span class="weather-cover-city">NOW · MOSCOW</span>
+                      <strong>18°</strong>
+                      <span class="weather-cover-state">Partly cloudy</span>
+                    </div>
+                    <span class="weather-cover-icon"><i></i><b></b></span>
+                  </div>
+                  <div class="weather-cover-metrics">
+                    <span><small>WIND</small><strong>3 m/s</strong></span>
+                    <span><small>HUMIDITY</small><strong>62%</strong></span>
+                    <span><small>UV INDEX</small><strong>Low</strong></span>
+                  </div>
+                  <div class="weather-cover-bottom"><span>FORECAST FOR EVERY DAY</span><span>↗</span></div>
+                </div>
               </div>
               <div class="project-body">
                 <span class="project-tag">Веб-дизайн</span>
                 <h3>Weather Pulse</h3>
                 <p>Погодный сервис с прогнозом, поиском города и актуальными условиями.</p>
+                <div class="collection-action"><span>Открыть сайт проекта</span><span aria-hidden="true">↗</span></div>
               </div>
             </article>
 
