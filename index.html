@@ -23,15 +23,14 @@
     <script>
       try {
         const savedTheme = localStorage.getItem('max-portfolio-theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.dataset.theme = savedTheme || (prefersDark ? 'dark' : 'light');
+        document.documentElement.dataset.theme = savedTheme || 'light';
       } catch {
         document.documentElement.dataset.theme = 'light';
       }
     </script>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=poster-readable-v1" />
-    <script defer src="script.js?v=portfolio-collections-v1"></script>
+    <link rel="stylesheet" href="styles.css?v=responsive-layout-v1" />
+    <script defer src="script.js?v=portfolio-radio-filters-v1"></script>
   </head>
   <body>
     <header class="site-header">
@@ -88,7 +87,6 @@
               <li>Графический дизайн</li>
             </ul>
           </div>
-
         </div>
       </section>
 
@@ -288,13 +286,28 @@
             <button class="category-step-button" data-direction="-1" type="button" aria-label="Предыдущая категория">
               <span aria-hidden="true">←</span>
             </button>
-            <div class="portfolio-filters" role="group" aria-label="Фильтр работ">
-              <button class="filter-button active" data-filter="all" type="button" aria-pressed="true">Все работы</button>
-              <button class="filter-button" data-filter="web-design" type="button" aria-pressed="false">Веб-дизайн</button>
-              <button class="filter-button" data-filter="graphic-design" type="button" aria-pressed="false">Графический дизайн</button>
-              <button class="filter-button" data-filter="marketplace" type="button" aria-pressed="false">Карточки товаров</button>
-              <button class="filter-button" data-filter="branding" type="button" aria-pressed="false">Брендинг</button>
-            </div>
+            <fieldset class="portfolio-filters" aria-label="Фильтр работ">
+              <label class="filter-option active">
+                <input class="filter-button" type="radio" name="portfolio-filter" value="all" data-filter="all" checked />
+                <span>Все работы</span>
+              </label>
+              <label class="filter-option">
+                <input class="filter-button" type="radio" name="portfolio-filter" value="web-design" data-filter="web-design" />
+                <span>Веб-дизайн</span>
+              </label>
+              <label class="filter-option">
+                <input class="filter-button" type="radio" name="portfolio-filter" value="graphic-design" data-filter="graphic-design" />
+                <span>Графический дизайн</span>
+              </label>
+              <label class="filter-option">
+                <input class="filter-button" type="radio" name="portfolio-filter" value="marketplace" data-filter="marketplace" />
+                <span>Карточки товаров</span>
+              </label>
+              <label class="filter-option">
+                <input class="filter-button" type="radio" name="portfolio-filter" value="branding" data-filter="branding" />
+                <span>Брендинг</span>
+              </label>
+            </fieldset>
             <button class="category-step-button" data-direction="1" type="button" aria-label="Следующая категория">
               <span aria-hidden="true">→</span>
             </button>

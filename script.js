@@ -159,7 +159,7 @@ sections.forEach((section) => observer.observe(section));
 const stepThroughCategories = (direction) => {
   if (!filterButtons.length) return;
 
-  const activeIndex = Array.from(filterButtons).findIndex((button) => button.classList.contains('active'));
+  const activeIndex = Array.from(filterButtons).findIndex((button) => button.checked);
   const nextIndex = (activeIndex + direction + filterButtons.length) % filterButtons.length;
   const nextButton = filterButtons[nextIndex];
 
@@ -180,14 +180,14 @@ portfolioFilterControls?.addEventListener('keydown', (event) => {
 });
 
 filterButtons.forEach((button) => {
-  button.addEventListener('click', () => {
+  button.addEventListener('change', () => {
+    if (!button.checked) return;
+
     const filter = button.dataset.filter;
     let visibleCount = 0;
 
     filterButtons.forEach((item) => {
-      const isActive = item === button;
-      item.classList.toggle('active', isActive);
-      item.setAttribute('aria-pressed', String(isActive));
+      item.closest('.filter-option')?.classList.toggle('active', item.checked);
     });
 
     portfolioCards.forEach((card) => {
@@ -201,6 +201,9 @@ filterButtons.forEach((button) => {
     if (portfolioEmpty) portfolioEmpty.hidden = visibleCount > 0;
   });
 });
+
+const initialFilter = Array.from(filterButtons).find((button) => button.checked);
+initialFilter?.dispatchEvent(new Event('change', { bubbles: true }));
 
 const updateModalImage = (direction = 0) => {
   if (!modalItems.length) return;
@@ -370,6 +373,7 @@ if (leadForm) {
     event.preventDefault();
     const submitButton = leadForm.querySelector('.submit-button');
     const payload = Object.fromEntries(new FormData(leadForm).entries());
+    const fallbackErrorMessage = 'Не удалось отправить заявку. Попробуйте позже или напишите напрямую: max5289457@gmail.com.';
 
     if (!payload.name || !payload.contact || !payload.projectType || !payload.description) {
       formStatus.textContent = 'Заполните обязательные поля.';
@@ -393,18 +397,31 @@ if (leadForm) {
         body: JSON.stringify(payload)
       });
 
-      const result = await response.json();
+      let result;
+      try {
+        result = await response.json();
+      } catch {
+        formStatus.textContent = fallbackErrorMessage;
+        formStatus.classList.add('error');
+        formStatus.classList.remove('success');
+        return;
+      }
 
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Не удалось отправить заявку.');
+      if (!response.ok || !result?.success) {
+        formStatus.textContent = typeof result?.message === 'string' && result.message.trim()
+          ? result.message
+          : fallbackErrorMessage;
+        formStatus.classList.add('error');
+        formStatus.classList.remove('success');
+        return;
       }
 
       formStatus.textContent = result.message;
       formStatus.classList.add('success');
       formStatus.classList.remove('error');
       leadForm.reset();
-    } catch (error) {
-      formStatus.textContent = error.message;
+    } catch {
+      formStatus.textContent = fallbackErrorMessage;
       formStatus.classList.add('error');
       formStatus.classList.remove('success');
     } finally {

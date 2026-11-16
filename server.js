@@ -135,7 +135,7 @@ async function handleContactRequest(req, res) {
     });
   } catch (error) {
     const message = error.code === 'CONFIG_ERROR'
-      ? 'Сервер не настроен для отправки заявок. Добавьте TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID в переменные окружения.'
+      ? 'Сервис заявок временно недоступен. Попробуйте позже или напишите напрямую: max5289457@gmail.com.'
       : 'Не удалось отправить заявку. Проверьте настройки Telegram или напишите напрямую: max5289457@gmail.com.';
 
     return sendJson(res, 500, {

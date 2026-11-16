@@ -15,7 +15,7 @@
   --shadow: 0 18px 56px rgba(25, 20, 18, 0.09);
   --card-shadow: 0 12px 30px rgba(25, 20, 18, 0.07);
   --radius: 22px;
-  --container: min(1180px, calc(100vw - 32px));
+  --container: min(1180px, calc(100% - 32px));
   --hero-gradient: radial-gradient(circle at top right, rgba(185, 120, 76, 0.14), transparent 26%), linear-gradient(135deg, #fbf8f4 0%, #efe8e1 100%);
 }
 
@@ -83,6 +83,7 @@ section[id] {
 
 .container {
   width: var(--container);
+  min-width: 0;
   margin: 0 auto;
 }
 
@@ -145,6 +146,7 @@ section[id] {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  min-width: 0;
   min-height: 82px;
 }
 
@@ -167,6 +169,7 @@ section[id] {
   justify-content: center;
   gap: 8px;
   flex-wrap: wrap;
+  min-width: 0;
 }
 
 .main-nav a {
@@ -299,17 +302,19 @@ section[id] {
 
 .hero-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   align-items: center;
-  gap: 44px;
 }
 
 .hero-copy {
-  max-width: 860px;
+  width: 100%;
+  max-width: 900px;
+  margin-inline: auto;
+  min-width: 0;
 }
 
 .hero-copy h1 {
-  max-width: 640px;
+  max-width: 900px;
   margin-bottom: 22px;
   font-size: clamp(3rem, 6vw, 5.1rem);
   line-height: 0.94;
@@ -317,7 +322,7 @@ section[id] {
 }
 
 .lead {
-  max-width: 640px;
+  max-width: 740px;
   color: var(--text-soft);
   font-size: clamp(1.02rem, 1.8vw, 1.2rem);
   line-height: 1.75;
@@ -374,7 +379,7 @@ section[id] {
 
 .about-grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 46px;
   align-items: center;
 }
@@ -663,9 +668,22 @@ section[id] {
   justify-content: center;
   flex-wrap: wrap;
   gap: 12px;
+  min-inline-size: 0;
+  padding: 0;
+  border: 0;
 }
 
-.filter-button {
+.filter-option {
+  position: relative;
+  display: inline-flex;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.filter-option > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   min-height: 42px;
   padding: 0 18px;
   border-radius: 999px;
@@ -674,20 +692,35 @@ section[id] {
   color: var(--text-soft);
   font-weight: 700;
   transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
-.filter-button.active,
-.filter-button:hover {
+.filter-option.active > span,
+.filter-option:hover > span {
   background: var(--text);
   color: #fff;
   border-color: var(--text);
 }
 
-:root[data-theme='dark'] .filter-button.active,
-:root[data-theme='dark'] .filter-button:hover {
+:root[data-theme='dark'] .filter-option.active > span,
+:root[data-theme='dark'] .filter-option:hover > span {
   background: var(--accent);
   color: var(--text);
   border-color: var(--accent);
+}
+
+.filter-button {
+  position: absolute;
+  inset: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  clip-path: inset(50%);
+}
+
+.filter-option:focus-within {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
 }
 
 .portfolio-grid {
@@ -1387,7 +1420,7 @@ section[id] {
 
 .contact-shell {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 28px;
   align-items: start;
 }
@@ -1395,6 +1428,7 @@ section[id] {
 .contact-copy {
   display: grid;
   gap: 16px;
+  min-width: 0;
 }
 
 .contact-copy h2 {
@@ -1424,6 +1458,7 @@ section[id] {
 .lead-form {
   display: grid;
   gap: 18px;
+  min-width: 0;
   padding: 28px 24px;
   background: var(--surface-strong);
   border: 1px solid var(--line);
@@ -1435,11 +1470,13 @@ section[id] {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
+  min-width: 0;
 }
 
 .lead-form label {
   display: grid;
   gap: 10px;
+  min-width: 0;
   color: var(--text);
   font-weight: 700;
 }
@@ -1447,6 +1484,8 @@ section[id] {
 .lead-form input,
 .lead-form select,
 .lead-form textarea {
+  min-width: 0;
+  max-width: 100%;
   width: 100%;
   min-height: 52px;
   border: 1px solid var(--line);
@@ -1507,7 +1546,7 @@ section[id] {
 
 .footer-wrap {
   display: grid;
-  grid-template-columns: 1.1fr 0.8fr 0.8fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr) minmax(0, 0.8fr);
   gap: 24px;
   align-items: start;
   padding-bottom: 20px;
@@ -1698,7 +1737,7 @@ section[id] {
   .about-grid,
   .contact-shell,
   .footer-wrap {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .process-grid,
@@ -1763,7 +1802,7 @@ section[id] {
   .services-grid,
   .advantages-grid,
   .portfolio-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .hero-list {
@@ -1785,7 +1824,7 @@ section[id] {
   }
 
   .principles {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .portfolio-filter-controls {
@@ -1804,7 +1843,7 @@ section[id] {
     gap: 8px;
   }
 
-  .filter-button {
+  .filter-option > span {
     min-height: 40px;
     padding-inline: 12px;
     font-size: 0.82rem;
