@@ -841,7 +841,7 @@ section[id] {
   --cover-ink: #f0e9df;
   --cover-muted: #b7a9c1;
   --cover-accent: #ff8b71;
-  --cover-paper: #322e3d;
+  --cover-paper: #f3eadc;
   --cover-deep: #36354b;
   --cover-glow: #704f77;
 }
@@ -1020,17 +1020,25 @@ section[id] {
 }
 
 .graphic-poster--back {
-  right: 10%;
-  transform: rotate(8deg);
+  right: 5%;
+  width: 44%;
+  transform: rotate(5deg);
   background: var(--cover-deep);
   color: var(--cover-paper);
 }
 
 .graphic-poster--front {
-  left: 10%;
-  transform: rotate(-7deg);
+  left: 5%;
+  width: 44%;
+  transform: rotate(-5deg);
   background: var(--cover-accent);
   color: var(--cover-paper);
+}
+
+.graphic-poster--back .poster-label,
+.graphic-poster--back strong {
+  align-self: flex-end;
+  text-align: right;
 }
 
 .graphic-poster strong {
@@ -1040,6 +1048,11 @@ section[id] {
   font-weight: 800;
   letter-spacing: -0.08em;
   line-height: 0.9;
+}
+
+.graphic-poster.graphic-poster--back strong {
+  font-size: clamp(1rem, 3.8vw, 1.65rem);
+  line-height: 1;
 }
 
 .poster-orbit {
