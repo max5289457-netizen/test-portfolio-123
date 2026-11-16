@@ -16,6 +16,7 @@ const modalImage = document.getElementById('modalImage');
 const modalTitle = document.getElementById('modalTitle');
 const modalCategory = document.getElementById('modalCategory');
 const modalDescription = document.getElementById('modalDescription');
+const modalProjectLink = document.getElementById('modalProjectLink');
 const modalThumbnails = document.getElementById('modalThumbnails');
 const modalClose = document.querySelector('.modal-close');
 const modalPrev = document.querySelector('.modal-prev');
@@ -250,6 +251,11 @@ const openProjectModal = (card) => {
   modalReturnFocus = card;
   previousBodyOverflow = document.body.style.overflow;
   modalIndex = 0;
+  const projectLink = card.dataset.link;
+  if (modalProjectLink) {
+    modalProjectLink.hidden = !projectLink;
+    if (projectLink) modalProjectLink.href = projectLink;
+  }
   modalThumbnails?.replaceChildren();
 
   modalItems.forEach((item, index) => {
@@ -340,7 +346,7 @@ document.addEventListener('keydown', (event) => {
   }
   if (event.key !== 'Tab') return;
 
-  const focusable = [...modal.querySelectorAll('button:not([disabled]):not([hidden])')]
+  const focusable = [...modal.querySelectorAll('button:not([disabled]):not([hidden]), a[href]:not([hidden])')]
     .filter((element) => element.getClientRects().length > 0);
   const first = focusable[0];
   const last = focusable[focusable.length - 1];

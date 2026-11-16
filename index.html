@@ -30,8 +30,8 @@
       }
     </script>
     <link rel="icon" href="images/favicon.svg" type="image/svg+xml" />
-    <link rel="stylesheet" href="styles.css?v=category-scroll-v1" />
-    <script defer src="script.js?v=category-gallery-v1"></script>
+    <link rel="stylesheet" href="styles.css?v=modal-project-link-v1" />
+    <script defer src="script.js?v=category-gallery-v2"></script>
   </head>
   <body>
     <header class="site-header">
@@ -320,6 +320,29 @@
                 <span class="project-tag">Брендинг</span>
                 <h3>AWAKE — кофейня</h3>
                 <p>Кофейный бренд с визуальным стилем и социальным контентом.</p>
+              </div>
+            </article>
+
+            <article
+              class="project-card"
+              role="button"
+              tabindex="0"
+              aria-haspopup="dialog"
+              aria-controls="projectModal"
+              aria-expanded="false"
+              data-title="Weather Pulse — погода онлайн"
+              data-category="web-design"
+              data-description="Адаптивный погодный сервис с поиском города, текущими условиями и прогнозом на неделю."
+              data-images="images/weather-pulse-cover.svg"
+              data-link="https://weather-site-ten-beryl.vercel.app/"
+            >
+              <div class="project-thumb">
+                <img src="images/weather-pulse-cover.svg" alt="Обложка Weather Pulse — погодный сервис с прогнозом для Москвы" />
+              </div>
+              <div class="project-body">
+                <span class="project-tag">Веб-дизайн</span>
+                <h3>Weather Pulse</h3>
+                <p>Погодный сервис с прогнозом, поиском города и актуальными условиями.</p>
               </div>
             </article>
 
@@ -701,6 +724,7 @@
           <span class="project-tag" id="modalCategory">Графический дизайн</span>
           <h3 id="modalTitle">Название проекта</h3>
           <p id="modalDescription">Описание проекта</p>
+          <a class="button button-primary" id="modalProjectLink" href="#" target="_blank" rel="noopener noreferrer" hidden>Открыть сайт</a>
         </div>
       </div>
     </div>

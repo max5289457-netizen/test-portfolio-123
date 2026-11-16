@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="background" x1="108" y1="47" x2="1093" y2="874" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101F39"/>
+      <stop offset=".55" stop-color="#0A1427"/>
+      <stop offset="1" stop-color="#102B43"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="820" y1="45" x2="1130" y2="491" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7C879"/>
+      <stop offset="1" stop-color="#F7C879" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="card" x1="563" y1="277" x2="1034" y2="762" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1D3151" stop-opacity=".96"/>
+      <stop offset="1" stop-color="#14243C" stop-opacity=".96"/>
+    </linearGradient>
+    <linearGradient id="button" x1="665" y1="599" x2="912" y2="676" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#83B9FF"/>
+      <stop offset="1" stop-color="#79E0D0"/>
+    </linearGradient>
+    <filter id="shadow" x="494" y="221" width="623" height="636" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="26"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.01 0 0 0 0 0.03 0 0 0 0 0.08 0 0 0 0.5 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="38" fill="url(#background)"/>
+  <circle cx="1010" cy="147" r="220" fill="url(#glow)" opacity=".2"/>
+  <circle cx="1051" cy="118" r="54" fill="#F7C879" opacity=".96"/>
+  <circle cx="1033" cy="100" r="54" fill="#13243D"/>
+  <path d="M0 723C178 626 312 809 493 715c178-92 255-70 411-8 119 48 206 15 296-29v222H0V723Z" fill="#10263D" opacity=".88"/>
+  <path d="M0 788c193-82 335 67 519-15 212-95 325-69 468-29 85 23 147 17 213-5v161H0V788Z" fill="#112D43" opacity=".78"/>
+  <g opacity=".7" fill="#D9E8FF">
+    <circle cx="137" cy="121" r="2"/><circle cx="388" cy="179" r="2"/><circle cx="482" cy="83" r="1.5"/>
+    <circle cx="1095" cy="300" r="2"/><circle cx="82" cy="398" r="1.5"/><circle cx="447" cy="337" r="1.5"/>
+  </g>
+  <g transform="translate(52 0)" font-family="Inter, Arial, sans-serif">
+    <text x="77" y="91" fill="#AFC6E5" font-size="17" font-weight="700" letter-spacing="5">WEATHER PULSE</text>
+    <text x="74" y="245" fill="#F5F8FF" font-size="63" font-weight="750" letter-spacing="-3">Погода</text>
+    <text x="74" y="316" fill="#F5F8FF" font-size="63" font-weight="750" letter-spacing="-3">на твоей</text>
+    <text x="74" y="387" fill="#F5F8FF" font-size="63" font-weight="750" letter-spacing="-3">стороне.</text>
+    <text x="78" y="445" fill="#AFC0D8" font-size="21">Точный прогноз — в одном взгляде</text>
+    <rect x="76" y="492" width="202" height="50" rx="25" fill="#1C3452" stroke="#38516E"/>
+    <circle cx="101" cy="517" r="6" fill="#85DCCF"/>
+    <text x="119" y="524" fill="#DCE8F7" font-size="16" font-weight="600">ПРОГНОЗ ПО ГОРОДУ</text>
+  </g>
+  <g filter="url(#shadow)" font-family="Inter, Arial, sans-serif">
+    <rect x="562" y="275" width="485" height="489" rx="30" fill="url(#card)" stroke="#486080" stroke-opacity=".68"/>
+    <text x="601" y="322" fill="#9EB4D0" font-size="15" font-weight="600" letter-spacing="1.4">СЕЙЧАС · МОСКВА</text>
+    <text x="597" y="408" fill="#F4F7FF" font-size="87" font-weight="650" letter-spacing="-5">18°</text>
+    <text x="604" y="447" fill="#CDDAEB" font-size="19">Переменная облачность</text>
+    <text x="605" y="478" fill="#8EA6C4" font-size="15">Ощущается как 16°</text>
+    <circle cx="932" cy="383" r="34" fill="#F7C879"/>
+    <path d="M896 391c0-15 12-27 27-27 5-16 21-27 38-23 13 3 22 14 24 27 16 1 28 13 28 28 0 15-12 27-28 27h-61c-16 0-28-14-28-32Z" fill="#D8E9FC"/>
+    <rect x="600" y="517" width="409" height="1" fill="#435776" opacity=".65"/>
+    <g>
+      <rect x="598" y="540" width="122" height="79" rx="17" fill="#263B59" opacity=".78"/>
+      <rect x="737" y="540" width="122" height="79" rx="17" fill="#263B59" opacity=".78"/>
+      <rect x="876" y="540" width="133" height="79" rx="17" fill="#263B59" opacity=".78"/>
+      <text x="616" y="568" fill="#92A9C6" font-size="12" font-weight="600">ВЕТЕР</text>
+      <text x="616" y="600" fill="#F0F5FC" font-size="20" font-weight="650">3 м/с</text>
+      <text x="755" y="568" fill="#92A9C6" font-size="12" font-weight="600">ВЛАЖНОСТЬ</text>
+      <text x="755" y="600" fill="#F0F5FC" font-size="20" font-weight="650">62%</text>
+      <text x="894" y="568" fill="#92A9C6" font-size="12" font-weight="600">УФ-ИНДЕКС</text>
+      <text x="894" y="600" fill="#F0F5FC" font-size="20" font-weight="650">Низкий</text>
+    </g>
+    <rect x="600" y="646" width="247" height="60" rx="22" fill="url(#button)"/>
+    <text x="630" y="683" fill="#10233D" font-size="16" font-weight="750">ПРОГНОЗ НА 7 ДНЕЙ</text>
+    <circle cx="975" cy="676" r="30" fill="#213956"/>
+    <path d="M964 676h22m-9-9 9 9-9 9" stroke="#C1D4EC" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="130" y="833" fill="#7792B4" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="600" letter-spacing="2">ПРОСТО. ТОЧНО. КАЖДЫЙ ДЕНЬ.</text>
+</svg>
