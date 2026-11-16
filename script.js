@@ -191,7 +191,9 @@ filterButtons.forEach((button) => {
     });
 
     portfolioCards.forEach((card) => {
-      const matches = filter === 'all' || card.dataset.category === filter;
+      const matches = card.dataset.filterOnly
+        ? filter === card.dataset.filterOnly
+        : filter === 'all' || card.dataset.category === filter;
       card.classList.toggle('is-hidden', !matches);
       if (matches) visibleCount += 1;
     });
