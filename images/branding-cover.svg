@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="paper" x1="85" y1="50" x2="1090" y2="850" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F7F1E8"/>
+      <stop offset="1" stop-color="#E9DDCC"/>
+    </linearGradient>
+    <filter id="shadow" x="170" y="130" width="865" height="700" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.2 0 0 0 0 0.16 0 0 0 0 0.1 0 0 0 0.18 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="38" fill="url(#paper)"/>
+  <circle cx="1051" cy="142" r="151" fill="#D9A36F" opacity=".23"/>
+  <circle cx="150" cy="782" r="190" fill="#8A9B79" opacity=".16"/>
+  <path d="M0 595c188-91 322-37 472 63 154 102 340 117 728-30v272H0V595Z" fill="#E4D6C1" opacity=".68"/>
+  <g filter="url(#shadow)">
+    <rect x="250" y="211" width="362" height="482" rx="18" fill="#173F38" transform="rotate(-7 250 211)"/>
+    <rect x="621" y="222" width="338" height="470" rx="18" fill="#FBF8F1" transform="rotate(5 621 222)"/>
+  </g>
+  <g transform="rotate(-7 431 453)">
+    <text x="298" y="310" fill="#D7C8A7" font-family="Arial, sans-serif" font-size="16" font-weight="700" letter-spacing="4">COFFEE · EVERY DAY</text>
+    <circle cx="430" cy="436" r="86" fill="#D7C8A7"/>
+    <path d="M401 429c4-26 51-50 67-22 12 21-19 28-28 43-9 14-1 35-20 40-28 8-45-24-19-61Z" fill="#173F38"/>
+    <path d="M393 468c22 8 44 6 69-2" stroke="#173F38" stroke-width="8" stroke-linecap="round"/>
+    <text x="322" y="580" fill="#F9F4E9" font-family="Georgia, serif" font-size="45" font-weight="700" letter-spacing="4">AWAKE</text>
+    <text x="361" y="617" fill="#D7C8A7" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="4">ROASTED WITH CARE</text>
+  </g>
+  <g transform="rotate(5 790 460)">
+    <rect x="680" y="314" width="220" height="274" rx="13" fill="#D5B58D"/>
+    <path d="M700 314h180l-17-40H718l-18 40Z" fill="#B9956E"/>
+    <rect x="706" y="393" width="168" height="105" rx="8" fill="#F6EDDE"/>
+    <circle cx="790" cy="445" r="25" fill="#315B4D"/>
+    <path d="M778 443c4-14 24-19 28-6 2 7-7 12-10 18-3 5-1 13-9 14-12 0-17-12-9-26Z" fill="#E8D6B8"/>
+    <text x="741" y="532" fill="#315B4D" font-family="Georgia, serif" font-size="23" font-weight="700" letter-spacing="2">COFIX</text>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="399" y="723" width="76" height="14" rx="7" fill="#173F38"/>
+    <rect x="483" y="723" width="76" height="14" rx="7" fill="#D7C8A7"/>
+    <rect x="567" y="723" width="76" height="14" rx="7" fill="#B8663D"/>
+    <rect x="651" y="723" width="76" height="14" rx="7" fill="#8A9B79"/>
+    <text x="399" y="779" fill="#6F6A5D" font-size="14" font-weight="700" letter-spacing="3">IDENTITY · PACKAGING · STORY</text>
+  </g>
+</svg>

@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="900" viewBox="0 0 1200 900" fill="none">
+  <defs>
+    <linearGradient id="background" x1="117" y1="38" x2="1099" y2="852" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E8F0E7"/>
+      <stop offset="1" stop-color="#D2E0DB"/>
+    </linearGradient>
+    <filter id="shadow" x="180" y="140" width="850" height="680" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix values="0 0 0 0 0.08 0 0 0 0 0.17 0 0 0 0 0.14 0 0 0 0.18 0"/>
+      <feBlend in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+  <rect width="1200" height="900" rx="38" fill="url(#background)"/>
+  <circle cx="1033" cy="135" r="176" fill="#F0B98A" opacity=".42"/>
+  <circle cx="160" cy="760" r="180" fill="#8DA99A" opacity=".25"/>
+  <g filter="url(#shadow)">
+    <rect x="251" y="210" width="292" height="470" rx="20" fill="#FFFDF8" transform="rotate(-8 251 210)"/>
+    <rect x="474" y="179" width="292" height="488" rx="20" fill="#FCF4E8" transform="rotate(2 474 179)"/>
+    <rect x="699" y="207" width="292" height="464" rx="20" fill="#FFFDF8" transform="rotate(8 699 207)"/>
+  </g>
+  <g transform="rotate(-8 397 436)">
+    <rect x="319" y="292" width="153" height="187" rx="16" fill="#F3D0DD"/>
+    <path d="M345 366c0-23 18-42 41-42s41 19 41 42v54c0 23-18 42-41 42s-41-19-41-42v-54Z" fill="#FFFBF7"/>
+    <path d="M370 345c0-9 7-16 16-16s16 7 16 16" stroke="#D6DEE5" stroke-width="10" stroke-linecap="round"/>
+    <text x="330" y="531" fill="#384A55" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">AIR · AUDIO</text>
+    <rect x="332" y="550" width="112" height="11" rx="5.5" fill="#D3D9D4"/>
+    <rect x="332" y="570" width="82" height="11" rx="5.5" fill="#D3D9D4"/>
+  </g>
+  <g transform="rotate(2 620 422)">
+    <rect x="532" y="275" width="178" height="207" rx="14" fill="#CB7958"/>
+    <rect x="549" y="292" width="144" height="173" rx="8" fill="#E9C0A2"/>
+    <path d="M580 335c21-15 58-15 80 0v92h-80v-92Z" fill="#F6E5D2"/>
+    <path d="M580 361h80M580 377h62M580 393h70" stroke="#BA795D" stroke-width="7" stroke-linecap="round"/>
+    <text x="562" y="526" fill="#384A55" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">HOME · STORAGE</text>
+    <rect x="563" y="546" width="121" height="11" rx="5.5" fill="#D3D9D4"/>
+    <rect x="563" y="566" width="85" height="11" rx="5.5" fill="#D3D9D4"/>
+  </g>
+  <g transform="rotate(8 844 432)">
+    <rect x="769" y="291" width="157" height="194" rx="14" fill="#F4E7D2"/>
+    <path d="M795 339c8-22 35-33 58-22 16 8 22 22 20 41-2 23-12 45-25 64-11 17-28 17-39 1-13-19-24-52-14-84Z" fill="#7C9B7B"/>
+    <path d="M829 323v109" stroke="#C9D8C1" stroke-width="7" stroke-linecap="round"/>
+    <text x="791" y="531" fill="#384A55" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="1">STYLE · DAILY</text>
+    <rect x="793" y="550" width="116" height="11" rx="5.5" fill="#D3D9D4"/>
+    <rect x="793" y="570" width="76" height="11" rx="5.5" fill="#D3D9D4"/>
+  </g>
+  <g font-family="Arial, sans-serif">
+    <rect x="392" y="720" width="88" height="14" rx="7" fill="#7C9B7B"/>
+    <rect x="488" y="720" width="88" height="14" rx="7" fill="#CB7958"/>
+    <rect x="584" y="720" width="88" height="14" rx="7" fill="#E7B8C8"/>
+    <rect x="680" y="720" width="88" height="14" rx="7" fill="#384A55"/>
+    <text x="392" y="776" fill="#51645D" font-size="14" font-weight="700" letter-spacing="3">PRODUCT · BENEFIT · STORY</text>
+  </g>
+</svg>

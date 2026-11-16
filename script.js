@@ -7,6 +7,7 @@ const filterButtons = document.querySelectorAll('.filter-button');
 const portfolioFilterControls = document.querySelector('.portfolio-filter-controls');
 const categoryStepButtons = document.querySelectorAll('.category-step-button');
 const projectCards = document.querySelectorAll('.project-card');
+const portfolioCards = document.querySelectorAll('.project-card:not([data-gallery-source])');
 const portfolioEmpty = document.getElementById('portfolioEmpty');
 const currentYear = document.getElementById('currentYear');
 const leadForm = document.getElementById('leadForm');
@@ -189,7 +190,7 @@ filterButtons.forEach((button) => {
       item.setAttribute('aria-pressed', String(isActive));
     });
 
-    projectCards.forEach((card) => {
+    portfolioCards.forEach((card) => {
       const matches = filter === 'all' || card.dataset.category === filter;
       card.classList.toggle('is-hidden', !matches);
       if (matches) visibleCount += 1;
@@ -231,8 +232,11 @@ const updateModalImage = (direction = 0) => {
 const openProjectModal = (card) => {
   if (!modal || !modalImage || !modalTitle || !modalCategory || !modalDescription) return;
 
-  const cards = card.dataset.category === 'marketplace'
-    ? Array.from(projectCards).filter((projectCard) => projectCard.dataset.category === 'marketplace')
+  const cards = card.dataset.collection === 'true'
+    ? Array.from(projectCards).filter((projectCard) => (
+      projectCard.dataset.gallerySource === 'true' &&
+      projectCard.dataset.category === card.dataset.category
+    ))
     : [card];
 
   modalItems = cards.flatMap((projectCard) => {
@@ -282,7 +286,7 @@ const openProjectModal = (card) => {
   if (modalThumbnails) modalThumbnails.hidden = !hasGallery;
 
   updateModalImage();
-  projectCards.forEach((projectCard) => projectCard.setAttribute('aria-expanded', String(projectCard === card)));
+  portfolioCards.forEach((projectCard) => projectCard.setAttribute('aria-expanded', String(projectCard === card)));
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';

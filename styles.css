@@ -714,6 +714,10 @@ section[id] {
   display: none;
 }
 
+.project-card[data-gallery-source] {
+  display: none;
+}
+
 .project-thumb {
   position: relative;
   overflow: hidden;
